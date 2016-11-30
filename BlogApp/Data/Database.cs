@@ -8,10 +8,10 @@ namespace BlogApp.ViewModels
 {
     public class Database:DbContext
     {
-        DbSet<User> Users { get; set; }
-        DbSet<Post> Posts { get; set; }
+        public DbSet<User> Users { get; set; }
+        public DbSet<Post> Posts { get; set; }
 
-        DbSet<Comment> Comments { get; set; }
+        public DbSet<Comment> Comments { get; set; }
 
         public Database() : base("name=Connection") { }
 
