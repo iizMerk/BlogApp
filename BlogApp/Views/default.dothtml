@@ -1,0 +1,24 @@
+﻿@viewModel BlogApp.ViewModels.DefaultViewModel, BlogApp
+
+<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  
+    <link href="../Content/bootstrap.css" rel="stylesheet" />
+    <meta charset="utf-8" />
+    <title></title>
+</head>
+<body>
+
+
+    <div class="container">
+        <div style="text-align:center;background-color:antiquewhite" class="jumbotron">
+            <h1>{{value: Title}}
+            <bs:GlyphIcon Icon="Globe" /></h1>
+
+        </div>
+    </div>
+
+</body>
+</html>
