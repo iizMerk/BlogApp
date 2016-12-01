@@ -8,11 +8,33 @@
     <title></title>
 </head>
 <body style="background-color:#f0e3c9">
+
     <div class="container">
         <div class="jumbotron">
-            <canvas>
-
-            </canvas>
+            <Table style="text-align:center">
+                <tr>
+                    <td> <dot:TextBox placeholder="Username" Text="{value: Username}"/></td>
+                </tr>
+                <tr>
+                    <td><dot:TextBox placeholder="Password" Text="{value: Password}"/></td>
+                </tr>
+                <tr>
+                    <td><dot:TextBox placeholder="Confirm Password" Text="{value: ConfirmPassword}" /></td>
+                </tr>
+                <tr>
+                    <td><dot:TextBox placeholder="Email" Text="{value: Email}" /></td>
+                </tr>
+                <tr>
+                    <td><dot:TextBox placeholder="Country" Text="{value: Country}" /></td>
+                </tr>
+                <tr>
+                    <td><bs:Button Text="Sign Up" Click="{{command: SignUp()}}" Type="Primary"/></td>
+                </tr>
+                <tr>
+                    <td>{{value: ErrorMessage}}</td>
+                    <td> <dot:ValidationSummary /> </td>
+                </tr>
+            </Table>
         </div>
     </div>
 </body>

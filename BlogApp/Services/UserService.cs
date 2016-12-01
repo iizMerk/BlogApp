@@ -1,8 +1,10 @@
-﻿using System;
+﻿using Microsoft.AspNet.Identity;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Security.Claims;
 using System.Web;
+
 
 namespace BlogApp.ViewModels
 {
@@ -24,7 +26,7 @@ namespace BlogApp.ViewModels
                     claim.Add(new Claim(ClaimTypes.Name, user.Username));
                     claim.Add(new Claim(ClaimTypes.Role, Convert.ToString(user.Userrole)));
 
-                    var identity = new ClaimsIdentity(claim);
+                    var identity = new ClaimsIdentity(claim ,DefaultAuthenticationTypes.ApplicationCookie);
                     return identity;
                 }
             }

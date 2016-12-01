@@ -7,21 +7,21 @@ using System.ComponentModel.DataAnnotations;
 
 namespace BlogApp.ViewModels
 {
-	public class SignupViewModel : DotvvmViewModelBase
-	{
-        [Required(ErrorMessage ="The Username is required")]
+    public class SignupViewModel : DotvvmViewModelBase
+    {
+        [Required(ErrorMessage = "The Username is required")]
         public string Username { get; set; }
         [Required(ErrorMessage = "The password is required.")]
         public string Password { get; set; }
         [Required]
-        [Compare("Password",ErrorMessage = "The Password and the ConfirmPassword need to be the same.")]
+        [Compare("Password", ErrorMessage = "The Password and the ConfirmPassword need to be the same.")]
         public string ConfirmPassword { get; set; }
-        [Required(ErrorMessage ="The email is required.")]
+        [Required(ErrorMessage = "The email is required.")]
         [EmailAddress(ErrorMessage = "This email is not valid.")]
-        public string  Email { get; set; }
+        public string Email { get; set; }
         public string Country { get; set; }
 
-        public string  ErrorMessage { get; set; }
+        public string ErrorMessage { get; set; }
 
         public void SignUp()
         {
@@ -32,14 +32,25 @@ namespace BlogApp.ViewModels
                 user.Password = Password;
                 user.Email = Email;
                 user.Country = Country;
-                UserService.CheckEmail(Email);
-                UserService.CheckUsername(Username);
-                if (true)
+                if (UserService.CheckEmail(Email) == true)
                 {
-                    //check
+                    ErrorMessage = "The email is alredy taken";
+                    Email = "-";
                 }
-                db.Users.Add(user);
-                db.SaveChanges();
+                else
+                {
+                    if (UserService.CheckUsername(Username) == true)
+                    {
+                        ErrorMessage = "The Username is alredy Taken";
+                    }
+                    else
+                    {
+                        db.Users.Add(user);
+                        db.SaveChanges();
+                    }
+                }
+
+
             }
         }
     }
