@@ -10,7 +10,7 @@ namespace BlogApp.ViewModels
     {
         public static void CreatePost(int userid,string Title , string Text)
         {
-            using (var db = new Database())
+            using (var db = new DatabaseBlog())
             {
                 var post = new Post();
                 post.UserID = userid;
@@ -23,7 +23,7 @@ namespace BlogApp.ViewModels
 
         public static void LoadPost(GridViewDataSet<Post> dataset)
         {
-            using (var db = new Database())
+            using (var db = new DatabaseBlog())
             {
                 var query = from p in db.Posts
                             select p;

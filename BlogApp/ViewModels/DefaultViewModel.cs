@@ -31,7 +31,7 @@ namespace BlogApp.ViewModels
 
         public void NewPost()
         {
-            using (var db = new Database())
+            using (var db = new DatabaseBlog())
             {
 
             }
@@ -39,7 +39,7 @@ namespace BlogApp.ViewModels
 
         public void Login()
         {
-            using (var db = new Database())
+            using (var db = new DatabaseBlog())
             {
                 var identity = UserService.Login(Username, Password);
                 if (identity != null)
@@ -61,7 +61,7 @@ namespace BlogApp.ViewModels
 
         public void Register()
         {
-            using (var db = new Database())
+            using (var db = new DatabaseBlog())
             {
 
             }
