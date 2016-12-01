@@ -11,7 +11,7 @@ namespace BlogApp.ViewModels
 
         public static ClaimsIdentity Login(string Usern,string Password)
         {
-            using (var db = new Database())
+            using (var db = new DatabaseBlog())
             {
                 var query = from p in db.Users
                             where p.Username == Usern && p.Password == Password

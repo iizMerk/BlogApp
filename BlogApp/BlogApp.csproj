@@ -125,7 +125,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Data\Comment.cs" />
-    <Compile Include="Data\Database.cs" />
+    <Compile Include="Data\DatabaseBlog.cs" />
     <Compile Include="Data\Post.cs" />
     <Compile Include="Data\User.cs" />
     <Compile Include="Data\UserRole.cs" />
