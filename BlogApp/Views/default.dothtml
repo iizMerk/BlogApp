@@ -13,6 +13,12 @@
 <body>
 
     <div ID="sidebar">
+        <table style="margin:0 auto">
+            <tr>
+                <td ><bs:Button class="logincell" Text="Sign in" Click="{command: Show()}"></bs:Button></td>
+                <td ><bs:Button class="logincell" Text="Sign up" Click="{command: Show()}"></bs:Button></td>
+            </tr>
+        </table>
         <bs:GlyphIcon Icon="List" style="margin:10px" />
     </div>
     <div class="wrapper">
@@ -23,7 +29,6 @@
             </h1>
         </div>
         <div>
-            <bs:Button Text="uccidilo ghoan" Click="{command: Show()}"></bs:Button>
             <br/><br/><br/><br/><br/>
         </div>
         <bs:ModalDialog IsDisplayed="{value:IsVisible}">
