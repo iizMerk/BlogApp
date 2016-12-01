@@ -30,5 +30,20 @@ namespace BlogApp.ViewModels
             }
             return null;
         }
+
+        public static int? GetCurrentUserId()
+        {
+            var identity = HttpContext.Current.GetOwinContext().Authentication.User.Identity as ClaimsIdentity;
+            if (identity.IsAuthenticated)
+            {
+                var id = identity.FindFirst(ClaimTypes.NameIdentifier).Value;
+                return Convert.ToInt32(id);
+
+            }
+            else
+            {
+                return null;
+            }
+        }
     }
 }
