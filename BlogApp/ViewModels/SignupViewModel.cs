@@ -36,7 +36,7 @@ namespace BlogApp.ViewModels
                 UserService.CheckUsername(Username);
                 if (true)
                 {
-
+                    //check
                 }
                 db.Users.Add(user);
                 db.SaveChanges();

@@ -10,7 +10,9 @@
 <body style="background-color:#f0e3c9">
     <div class="container">
         <div class="jumbotron">
-            
+            <canvas>
+
+            </canvas>
         </div>
     </div>
 </body>
