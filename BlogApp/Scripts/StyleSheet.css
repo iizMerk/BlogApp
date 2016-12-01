@@ -1,5 +1,5 @@
 ﻿.wrapper {
-    width: 1000px;
+    width: 1500px;
     margin: 0 auto;
     background-color: #f0e3c9;
 }
@@ -19,7 +19,7 @@
     width: 250px;
     height: 100vh;
     background-color: #c0a988;
-    position: fixed;
+    float:left;
 }
 
 #ccc {

@@ -10,36 +10,40 @@
     <meta charset="utf-8" />
     <title></title>
 </head>
-<body class="wrapper" >
+<body>
 
     <div ID="sidebar">
-        <bs:GlyphIcon Icon="List" />
+        <bs:GlyphIcon Icon="List" style="margin:10px" />
     </div>
-    <div class="jumbotron" ID="divjumbo" >
-        <h1>
-            {{value: BlogAppTitle}}
-            <bs:GlyphIcon Icon="Globe" />
-        </h1>
+    <div class="wrapper">
+        <div class="jumbotron" ID="divjumbo">
+            <h1>
+                {{value: BlogAppTitle}}
+                <bs:GlyphIcon Icon="Globe" />
+            </h1>
+        </div>
+        <div>
+            <bs:Button Text="uccidilo ghoan" Click="{command: Show()}"></bs:Button>
+            <br/><br/><br/><br/><br/>
+        </div>
+        <bs:ModalDialog IsDisplayed="{value:IsVisible}">
+            <HeaderTemplate>
+                <h3 style="margin-left:30px">Sign in </h3>
+            </HeaderTemplate>
+            <ContentTemplate>
+                <table style="width: 90%; margin:0 auto">
+                    <tr>
+                        <td><dot:TextBox class="form-control logincell" Text="{value: Username }" placeholder="Username" /></td>
+                    </tr>
+                    <tr>
+                        <td><dot:TextBox class="form-control logincell" Text="{value: Password}" placeholder="Password" /></td>
+                    </tr>
+                    <tr>
+                        <td> <bs:Button style="margin:10px" Text="Login"></bs:Button></td>
+                    </tr>
+                </table>
+            </ContentTemplate>
+        </bs:ModalDialog>
     </div>
-    ciaosdodofsdfi <bs:Button Text="uccidilo ghoan" Click="{command: Show()}"></bs:Button>
-
-    <bs:ModalDialog IsDisplayed="{value:IsVisible}">
-        <HeaderTemplate>
-            <h3 style="margin-left:30px">Sign in </h3>
-        </HeaderTemplate>
-        <ContentTemplate>
-            <table style="width: 90%; margin:0 auto">
-                <tr>
-                    <td><dot:TextBox class="form-control logincell" Text="{value: Username }" placeholder="Username"/></td>
-                </tr>
-                <tr>
-                    <td><dot:TextBox class="form-control logincell" Text="{value: Password}" placeholder="Password" /></td>
-                </tr>
-                <tr>
-                    <td> <bs:Button class="logincell" style="margin:10px" Text="Login"></bs:Button></td>
-                </tr>
-            </table>
-        </ContentTemplate>
-    </bs:ModalDialog>
 </body>
 </html>
