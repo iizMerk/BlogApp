@@ -13,7 +13,7 @@
 <body class="wrapper" >
 
     <div style="left:0px; top:0px; width:250px; height:100vh; background-color:#c0a988; position:fixed">
-        ciao
+        <bs:GlyphIcon Icon="List" />
     </div>
     <div style="text-align:center; background-color:#f0e3c9" class="jumbotron" >
         <h1>

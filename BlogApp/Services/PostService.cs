@@ -1,4 +1,5 @@
-﻿using System;
+﻿using DotVVM.Framework.Controls;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -17,6 +18,16 @@ namespace BlogApp.ViewModels
                 post.Text = Text;
                 db.Posts.Add(post);
                 db.SaveChanges();
+            }
+        }
+
+        public static void LoadPost(GridViewDataSet<Post> dataset)
+        {
+            using (var db = new Database())
+            {
+                var query = from p in db.Posts
+                            select p;
+                dataset.LoadFromQueryable(query);
             }
         }
     }

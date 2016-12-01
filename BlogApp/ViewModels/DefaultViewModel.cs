@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 using DotVVM.Framework.ViewModel;
 using System.ComponentModel.DataAnnotations;
 using System.Security.Claims;
+using DotVVM.Framework.Controls;
 
 namespace BlogApp.ViewModels
 {
@@ -65,5 +66,18 @@ namespace BlogApp.ViewModels
 
             }
         }
+
+        public GridViewDataSet<Post> Posts { get; set; } = new GridViewDataSet<Post>()
+        {
+            SortExpression = nameof(Post.Date),
+            SortDescending = false,
+            PageSize = 4
+        };
+
+        public override Task Load()
+        {
+            PostService.LoadPost(Posts);
+            return base.Load();
+        }      
     }
 }
