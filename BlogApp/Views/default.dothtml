@@ -10,36 +10,37 @@
     <meta charset="utf-8" />
     <title></title>
 </head>
-<body class="wrapper">
-    <bs:ModalDialog >
+<body class="wrapper" style="background-color:antiquewhite">
+
+    <div style="left:0px; top:0px; width:250px; height:100vh; background-color:grey; position:fixed">
+        ciao
+    </div>
+    <div style="text-align:center" class="jumbotron">
+        <h1>
+            {{value: BlogAppTitle}}
+            <bs:GlyphIcon Icon="Globe" />
+        </h1>
+    </div>
+    ciaosdodofsdfi gdfff
+    <bs:ModalDialog>
         <HeaderTemplate>
-            hello come va?
+            hello come va
         </HeaderTemplate>
         <ContentTemplate>
-           <table>
-               <tr>
-                   <td>username</td>
-                   <td><dot:TextBox class="text-center" Text="zz" /></td>
-               </tr>
-               <tr>
-                   <td>password</td>
-                   <td><dot:TextBox class="text-center" Text="zz"/></td>
-               </tr>
-               <tr >
-                   <td colspan="2"> logghin :) <dot:Button Text="sucami la minchia"></dot:Button></td>
-               </tr>
-           </table>
+            <table>
+                <tr>
+                    <td>username</td>
+                    <td><dot:TextBox class="text-center" Text="zz" /></td>
+                </tr>
+                <tr>
+                    <td>password</td>
+                    <td><dot:TextBox class="text-center" Text="zz" /></td>
+                </tr>
+                <tr>
+                    <td colspan="2"> logghin :) <dot:Button Text="sucami la minchia"></dot:Button></td>
+                </tr>
+            </table>
         </ContentTemplate>
     </bs:ModalDialog>
-        <div style="left:0px; top:0px; width:250px; height:100vh; background-color:grey; position:fixed">
-            ciao
-        </div>
-            <div style="text-align:center;background-color:antiquewhite" class="jumbotron">
-                    <h1>
-                        {{value: Title}}
-                        <bs:GlyphIcon Icon="Globe" />
-                    </h1>
-            </div>
-        ciaosdodofsdfi gdfff
 </body>
 </html>
