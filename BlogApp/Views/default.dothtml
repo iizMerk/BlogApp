@@ -51,7 +51,10 @@
                         <td><dot:TextBox class="form-control logincell" Text="{value: Password}" placeholder="Password" /></td>
                     </tr>
                     <tr>
-                        <td> <bs:Button style="margin:10px" Text="Login"></bs:Button></td>
+                        <td> <bs:Button style="margin:10px" Text="Login" Click="{command: Login()}"></bs:Button></td>
+                    </tr>
+                    <tr>
+                        <td>{{value: ErrorMessage}}</td>
                     </tr>
                 </table>
             </ContentTemplate>
