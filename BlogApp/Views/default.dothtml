@@ -10,12 +10,12 @@
     <meta charset="utf-8" />
     <title></title>
 </head>
-<body class="wrapper" style="background-color:antiquewhite">
+<body class="wrapper" >
 
-    <div style="left:0px; top:0px; width:250px; height:100vh; background-color:grey; position:fixed">
+    <div style="left:0px; top:0px; width:250px; height:100vh; background-color:#c0a988; position:fixed">
         ciao
     </div>
-    <div style="text-align:center" class="jumbotron">
+    <div style="text-align:center; background-color:#f0e3c9" class="jumbotron" >
         <h1>
             {{value: BlogAppTitle}}
             <bs:GlyphIcon Icon="Globe" />
