@@ -15,8 +15,14 @@
     <div ID="sidebar">
         <table style="margin:0 auto">
             <tr>
-                <td ><bs:Button class="logincell" Text="Sign in" Click="{command: Show()}"></bs:Button></td>
-                <td ><bs:Button class="logincell" Text="Sign up" Click="{command: Show()}"></bs:Button></td>
+                <dot:AuthenticatedView>
+                    <AuthenticatedTemplate>
+                        <td><bs:Button class="logincell" Text="Sign up" Click="{command: Show()}"></bs:Button></td>
+                    </AuthenticatedTemplate>
+                    <NotAuthenticatedTemplate>
+                        <td><bs:Button class="logincell" Text="Sign in" Click="{command: Show()}"></bs:Button></td>
+                    </NotAuthenticatedTemplate>
+                </dot:AuthenticatedView>
             </tr>
         </table>
         <bs:GlyphIcon Icon="List" style="margin:10px" />
@@ -29,8 +35,9 @@
             </h1>
         </div>
         <div>
-            <br/><br/><br/><br/><br/>
+
         </div>
+        <!--modal dialog!!-->
         <bs:ModalDialog IsDisplayed="{value:IsVisible}">
             <HeaderTemplate>
                 <h3 style="margin-left:30px">Sign in </h3>
