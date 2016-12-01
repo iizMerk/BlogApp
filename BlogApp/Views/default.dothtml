@@ -10,12 +10,12 @@
     <meta charset="utf-8" />
     <title></title>
 </head>
-<body class="wrapper" >
+<body class="wrapper">
 
     <div ID="sidebar">
         <bs:GlyphIcon Icon="List" />
     </div>
-    <div class="jumbotron" ID="divjumbo" >
+    <div class="jumbotron" ID="divjumbo">
         <h1>
             {{value: BlogAppTitle}}
             <bs:GlyphIcon Icon="Globe" />
@@ -30,13 +30,16 @@
         <ContentTemplate>
             <table style="width: 90%; margin:0 auto">
                 <tr>
-                    <td><dot:TextBox class="form-control logincell" Text="{value: Username }" placeholder="Username"/></td>
+                    <td><dot:TextBox class="form-control logincell" Text="{value: Username }" placeholder="Username" /></td>
                 </tr>
                 <tr>
                     <td><dot:TextBox class="form-control logincell" Text="{value: Password}" placeholder="Password" /></td>
                 </tr>
                 <tr>
-                    <td> <bs:Button class="logincell" style="margin:10px" Text="Login"></bs:Button></td>
+                    <td> <bs:Button class="logincell" style="margin:10px" Text="Login" Click="{command: Login()}"></bs:Button></td>
+                </tr>
+                <tr>
+                    <td><span style="color:red">{{value: ErrorMessage}}</span></td>
                 </tr>
             </table>
         </ContentTemplate>
