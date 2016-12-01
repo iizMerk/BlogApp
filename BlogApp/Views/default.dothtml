@@ -25,10 +25,10 @@
 
     <bs:ModalDialog IsDisplayed="{value:IsVisible}">
         <HeaderTemplate>
-            <h1>Sign in </h1>
+            <h3 style="margin-left:30px">Sign in </h3>
         </HeaderTemplate>
         <ContentTemplate>
-            <table style="width: 500px">
+            <table style="width: 90%; margin:0 auto">
                 <tr>
                     <td><dot:TextBox class="form-control logincell" Text="{value: Username }" placeholder="Username"/></td>
                 </tr>
@@ -36,7 +36,7 @@
                     <td><dot:TextBox class="form-control logincell" Text="{value: Password}" placeholder="Password" /></td>
                 </tr>
                 <tr>
-                    <td> <dot:Button Text="Login"></dot:Button></td>
+                    <td> <bs:Button class="logincell" style="margin:10px" Text="Login"></bs:Button></td>
                 </tr>
             </table>
         </ContentTemplate>
