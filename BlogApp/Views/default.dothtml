@@ -39,6 +39,7 @@
                     <td> <bs:Button class="logincell" style="margin:10px" Text="Login" Click="{command: Login()}"></bs:Button></td>
                 </tr>
                 <tr>
+                    <%--Error --%>
                     <td><span style="color:red">{{value: ErrorMessage}}</span></td>
                 </tr>
             </table>

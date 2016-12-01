@@ -9,7 +9,7 @@ namespace BlogApp.ViewModels
     public class UserService
     {
 
-        public static ClaimsIdentity Login(string Usern,string Password)
+        public static ClaimsIdentity Login(string Usern, string Password)
         {
             using (var db = new DatabaseBlog())
             {
@@ -43,6 +43,43 @@ namespace BlogApp.ViewModels
             else
             {
                 return null;
+            }
+        }
+
+        public static bool CheckUsername(string Username)
+        {
+            using (var db = new DatabaseBlog())
+            {
+                var query = from p in db.Users
+                            where p.Username == Username
+                            select p;
+                if (query.Count() != 0)
+                {
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
+            }
+        }
+
+        public static bool CheckEmail(string Email)
+        {
+            using (var db = new DatabaseBlog())
+            {
+                var query = from p in db.Users
+                            where p.Email == Email
+                            select p;
+                if (query.Count() != 0)
+                {
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
+
             }
         }
     }
