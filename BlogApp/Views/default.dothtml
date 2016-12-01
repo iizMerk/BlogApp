@@ -12,33 +12,31 @@
 </head>
 <body class="wrapper" >
 
-    <div style="left:0px; top:0px; width:250px; height:100vh; background-color:#c0a988; position:fixed">
+    <div ID="sidebar">
         <bs:GlyphIcon Icon="List" />
     </div>
-    <div style="text-align:center; background-color:#f0e3c9" class="jumbotron" >
+    <div class="jumbotron" ID="divjumbo" >
         <h1>
             {{value: BlogAppTitle}}
             <bs:GlyphIcon Icon="Globe" />
         </h1>
     </div>
-    ciaosdodofsdfi <bs:Button Text="uccidilo ghoan"></bs:Button>
+    ciaosdodofsdfi <bs:Button Text="uccidilo ghoan" Click="{command: Show()}"></bs:Button>
 
     <bs:ModalDialog IsDisplayed="{value:IsVisible}">
         <HeaderTemplate>
-            hello come va
+            <h1>Sign in </h1>
         </HeaderTemplate>
         <ContentTemplate>
-            <table>
+            <table style="width: 500px">
                 <tr>
-                    <td>username</td>
-                    <td><dot:TextBox class="text-center" Text="zz" /></td>
+                    <td><dot:TextBox class="form-control logincell" Text="{value: Username }" placeholder="Username"/></td>
                 </tr>
                 <tr>
-                    <td>password</td>
-                    <td><dot:TextBox class="text-center" Text="zz" /></td>
+                    <td><dot:TextBox class="form-control logincell" Text="{value: Password}" placeholder="Password" /></td>
                 </tr>
                 <tr>
-                    <td colspan="2"> logghin :) <dot:Button Text="sucami la minchia"></dot:Button></td>
+                    <td> <dot:Button Text="Login"></dot:Button></td>
                 </tr>
             </table>
         </ContentTemplate>

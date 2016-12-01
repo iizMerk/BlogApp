@@ -4,6 +4,24 @@
     background-color: #f0e3c9;
 }
 
+#divjumbo {
+    text-align: center;
+    background-color: #f0e3c9;
+}
+
+.logincell{
+    margin:3px;
+}
+
+#sidebar {
+    left: 0px;
+    top: 0px;
+    width: 250px;
+    height: 100vh;
+    background-color: #c0a988;
+    position: fixed;
+}
+
 #ccc {
     height: calc(100vh - 500px);
 }

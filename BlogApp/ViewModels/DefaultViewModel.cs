@@ -56,7 +56,7 @@ namespace BlogApp.ViewModels
 
         public void Show()
         {
-
+            IsVisible = true;
         }
 
         public void Register()
@@ -76,7 +76,7 @@ namespace BlogApp.ViewModels
 
         public override Task Load()
         {
-            PostService.LoadPost(Posts);
+           // PostService.LoadPost(Posts);
             return base.Load();
         }      
     }
