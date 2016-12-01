@@ -4,21 +4,42 @@
 
 <html lang="en" xmlns="http://www.w3.org/1999/xhtml">
 <head>
-  
+
     <link href="../Content/bootstrap.css" rel="stylesheet" />
+    <link href="../Scripts/StyleSheet.css" rel="stylesheet" />
     <meta charset="utf-8" />
     <title></title>
 </head>
-<body>
-
-
-    <div class="container">
-        <div style="text-align:center;background-color:antiquewhite" class="jumbotron">
-            <h1>{{value: Title}}
-            <bs:GlyphIcon Icon="Globe" /></h1>
-
+<body class="wrapper">
+    <bs:ModalDialog >
+        <HeaderTemplate>
+            hello come va?
+        </HeaderTemplate>
+        <ContentTemplate>
+           <table>
+               <tr>
+                   <td>username</td>
+                   <td><dot:TextBox class="text-center" Text="zz" /></td>
+               </tr>
+               <tr>
+                   <td>password</td>
+                   <td><dot:TextBox class="text-center" Text="zz"/></td>
+               </tr>
+               <tr >
+                   <td colspan="2"> logghin :) <dot:Button Text="sucami la minchia"></dot:Button></td>
+               </tr>
+           </table>
+        </ContentTemplate>
+    </bs:ModalDialog>
+        <div style="left:0px; top:0px; width:250px; height:100vh; background-color:grey; position:fixed">
+            ciao
         </div>
-    </div>
-
+            <div style="text-align:center;background-color:antiquewhite" class="jumbotron">
+                    <h1>
+                        {{value: Title}}
+                        <bs:GlyphIcon Icon="Globe" />
+                    </h1>
+            </div>
+        ciaosdodofsdfi gdfff
 </body>
 </html>
