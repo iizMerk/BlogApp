@@ -17,6 +17,7 @@ namespace BlogApp.ViewModels
         public string Password { get; set; }
         public string ConfirmPassword { get; set; }
         public string Email { get; set; }
+        public bool IsVisible { get; set; } = false;
 
         //Variable For the Post
 
@@ -50,6 +51,11 @@ namespace BlogApp.ViewModels
                     ErrorMessage = "Your Email or Password Are incorrect.";
                 }
             }
+        }
+
+        public void Show()
+        {
+
         }
 
         public void Register()

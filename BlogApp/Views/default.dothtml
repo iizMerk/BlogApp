@@ -21,8 +21,9 @@
             <bs:GlyphIcon Icon="Globe" />
         </h1>
     </div>
-    ciaosdodofsdfi gdfff
-    <bs:ModalDialog>
+    ciaosdodofsdfi <bs:Button Text="uccidilo ghoan"></bs:Button>
+
+    <bs:ModalDialog IsDisplayed="{value:IsVisible}">
         <HeaderTemplate>
             hello come va
         </HeaderTemplate>
