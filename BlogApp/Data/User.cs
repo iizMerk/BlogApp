@@ -14,6 +14,8 @@ namespace BlogApp.ViewModels
         public string Password { get; set; }
         public string ConfirmPassword { get; set; }
         public string Email { get; set; }
+
+        public UserRole Userrole { get; set; }
         public virtual ICollection<Post> Post { get; set; } = new List<Post>();
     }
 }

@@ -128,6 +128,7 @@
     <Compile Include="Data\Database.cs" />
     <Compile Include="Data\Post.cs" />
     <Compile Include="Data\User.cs" />
+    <Compile Include="Data\UserRole.cs" />
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Services\CommentService.cs" />

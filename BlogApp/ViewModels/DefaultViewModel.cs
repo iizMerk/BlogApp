@@ -25,11 +25,13 @@ namespace BlogApp.ViewModels
         //Variables For The Site 
         public string BlogAppTitle { get; set; } = "Welcome to BlogApp";
 
+        public string ErrorMessage { get; set; }
+
         public void NewPost()
         {
             using (var db = new Database())
             {
-                
+
             }
         }
 
@@ -37,14 +39,22 @@ namespace BlogApp.ViewModels
         {
             using (var db = new Database())
             {
- 
-                
+                var identity = UserService.Login(Username, Password);
+                if (identity != null)
+                {
+                    Context.OwinContext.Authentication.SignIn(identity);
+                    Context.RedirectToRoute("Default");
+                }
+                else
+                {
+                    ErrorMessage = "Your Email or Password Are incorrect.";
+                }
             }
         }
 
         public void Register()
         {
-            using (var db= new Database())
+            using (var db = new Database())
             {
 
             }
