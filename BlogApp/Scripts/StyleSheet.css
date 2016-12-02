@@ -9,8 +9,8 @@
     background-color: #f0e3c9;
 }
 
-.logincell{
-    margin:3px;
+.logincell {
+    margin: 3px;
 }
 
 #sidebar {
@@ -19,9 +19,15 @@
     width: 250px;
     height: 100vh;
     background-color: #c0a988;
-    float:left;
+    float: left;
 }
 
 #ccc {
     height: calc(100vh - 500px);
+}
+
+#text {
+    min-height: 200px;
+    min-width: 500px;
+    max-width: 500px;
 }
