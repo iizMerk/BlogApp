@@ -11,18 +11,19 @@
 
     <div class="container">
         <div class="jumbotron">
+            <h2></h2>
             <Table style="text-align:center">
                 <tr>
                     <td> <dot:TextBox placeholder="Username" Text="{value: Username}"/></td>
                 </tr>
                 <tr>
-                    <td><dot:TextBox placeholder="Password" Text="{value: Password}"/></td>
+                    <td><dot:TextBox Type="Password" placeholder="Password" Text="{value: Password}"/></td>
                 </tr>
                 <tr>
-                    <td><dot:TextBox placeholder="Confirm Password" Text="{value: ConfirmPassword}" /></td>
+                    <td><dot:TextBox Type="Password" placeholder="Confirm Password" Text="{value: ConfirmPassword}" /></td>
                 </tr>
                 <tr>
-                    <td><dot:TextBox placeholder="Email" Text="{value: Email}" /></td>
+                    <td><dot:TextBox Type="Email" placeholder="Email" Text="{value: Email}" /></td>
                 </tr>
                 <tr>
                     <td><dot:TextBox placeholder="Country" Text="{value: Country}" /></td>

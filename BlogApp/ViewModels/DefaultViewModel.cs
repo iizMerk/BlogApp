@@ -54,6 +54,28 @@ namespace BlogApp.ViewModels
             }
         }
 
+        public void SignOut()
+        {
+            Context.OwinContext.Authentication.SignOut();
+            Context.RedirectToRoute("Default");
+        }
+        public void SignUp()
+        {
+            Context.RedirectToRoute("SignUp");
+        }
+
+        public void CreateNewPost()
+        {
+            if (UserService.GetCurrentUserId() == null)
+            {
+                IsVisible = true;
+            }
+            else
+            {
+                Context.RedirectToRoute("CreatePost");
+            }   
+        }
+
         public void Show()
         {
             IsVisible = true;

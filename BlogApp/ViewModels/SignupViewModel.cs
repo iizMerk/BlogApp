@@ -13,7 +13,7 @@ namespace BlogApp.ViewModels
         public string Username { get; set; }
         [Required(ErrorMessage = "The password is required.")]
         public string Password { get; set; }
-        [Required]
+        [Required(ErrorMessage= "The ConfirmPassword is required.")]
         [Compare("Password", ErrorMessage = "The Password and the ConfirmPassword need to be the same.")]
         public string ConfirmPassword { get; set; }
         [Required(ErrorMessage = "The email is required.")]
@@ -42,6 +42,7 @@ namespace BlogApp.ViewModels
                     if (UserService.CheckUsername(Username) == true)
                     {
                         ErrorMessage = "The Username is alredy Taken";
+                        Username = "-";
                     }
                     else
                     {

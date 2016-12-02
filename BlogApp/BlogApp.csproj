@@ -140,6 +140,7 @@
     <Compile Include="Services\UserService.cs" />
     <Compile Include="Startup.cs" />
     <Compile Include="DotvvmStartup.cs" />
+    <Compile Include="ViewModels\CreatePostViewModel.cs" />
     <Compile Include="ViewModels\DefaultViewModel.cs" />
     <Compile Include="ViewModels\SignupViewModel.cs" />
   </ItemGroup>
@@ -198,6 +199,7 @@
     <Content Include="packages.config" />
     <Content Include="Scripts\jquery-1.9.1.min.map" />
     <Content Include="Views\signup.dothtml" />
+    <Content Include="Views\CreatePost.dothtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

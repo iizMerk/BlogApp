@@ -10,14 +10,14 @@
     <meta charset="utf-8" />
     <title></title>
 </head>
-<body>
+<body style="background-color:#f0e3c9">
 
     <div ID="sidebar">
         <table style="margin:0 auto">
             <tr>
                 <dot:AuthenticatedView>
                     <AuthenticatedTemplate>
-                        <td><bs:Button class="logincell" Text="Sign up" Click="{command: Show()}"></bs:Button></td>
+                        <td><bs:Button class="logincell" Text="Sign out" Click="{command: SignOut()}"></bs:Button></td>
                     </AuthenticatedTemplate>
                     <NotAuthenticatedTemplate>
                         <td><bs:Button class="logincell" Text="Sign in" Click="{command: Show()}"></bs:Button></td>
@@ -25,7 +25,6 @@
                 </dot:AuthenticatedView>
             </tr>
         </table>
-        <bs:GlyphIcon Icon="List" style="margin:10px" />
     </div>
     <div class="wrapper">
         <div class="jumbotron" ID="divjumbo">
@@ -34,31 +33,34 @@
                 <bs:GlyphIcon Icon="Globe" />
             </h1>
         </div>
-        <div>
-
-        </div>
-        <!--modal dialog!!-->
-        <bs:ModalDialog IsDisplayed="{value:IsVisible}">
-            <HeaderTemplate>
-                <h3 style="margin-left:30px">Sign in </h3>
-            </HeaderTemplate>
-            <ContentTemplate>
-                <table style="width: 90%; margin:0 auto">
-                    <tr>
-                        <td><dot:TextBox class="form-control logincell" Text="{value: Username }" placeholder="Username" /></td>
-                    </tr>
-                    <tr>
-                        <td><dot:TextBox class="form-control logincell" Text="{value: Password}" placeholder="Password" /></td>
-                    </tr>
-                    <tr>
-                        <td> <bs:Button style="margin:10px" Text="Login" Click="{command: Login()}"></bs:Button></td>
-                    </tr>
-                    <tr>
-                        <td>{{value: ErrorMessage}}</td>
-                    </tr>
-                </table>
-            </ContentTemplate>
-        </bs:ModalDialog>
+        <bs:Button Text="CreateNewPost" Type="Primary" Click="{command: CreateNewPost()}"/>
     </div>
+
+    <!--modal dialog!!-->
+    <bs:ModalDialog IsDisplayed="{value:IsVisible}">
+        <HeaderTemplate>
+            <h3 style="margin-left:30px">Sign in </h3>
+        </HeaderTemplate>
+        <ContentTemplate>
+            <table style="width: 90%; margin:0 auto">
+                <tr>
+                    <td><dot:TextBox class="form-control logincell"  Text="{value: Username }" placeholder="Username" /></td>
+                </tr>
+                <tr>
+                    <td><dot:TextBox class="form-control logincell" Type="Password" Text="{value: Password}" placeholder="Password" /></td>
+                </tr>
+                <tr>
+                    <td> <bs:Button style="margin:10px" Text="Login" Click="{command: Login()}"></bs:Button></td>
+                </tr>
+                <tr>
+                    <td>{{value: ErrorMessage}}</td>
+                </tr>
+            </table>
+        </ContentTemplate>
+        <FooterTemplate>
+             <bs:Button Text="SignUp" Click="{command: SignUp()}"></bs:Button>
+        </FooterTemplate>
+    </bs:ModalDialog>
+
 </body>
 </html>
