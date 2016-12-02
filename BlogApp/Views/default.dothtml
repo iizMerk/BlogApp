@@ -40,6 +40,11 @@
                 </td>
             </tr>
         </table>
+        <bs:RouteLink class="logincell" RouteName="CreatePost" style="font-size:20px; margin:10px; border-radius:10px; border:solid" Type="Default">
+            <bs:GlyphIcon Icon="Book" />
+            <br />
+            Create Post
+        </bs:RouteLink>
     </div>
     <div class="wrapper">
         <div class="jumbotron" ID="divjumbo">
