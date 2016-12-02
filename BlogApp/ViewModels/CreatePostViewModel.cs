@@ -16,6 +16,8 @@ namespace BlogApp.ViewModels
         [Required(ErrorMessage ="The text is required.")]
         [MinLength(100,ErrorMessage = "Your Post need to have at least 100 characters.")]
         public string Text { get; set; }
+        public string[] CategoryList { get; set; } = { "Post", "AdminPost"};
+        public PostCategory NewPostCategory { get; set; }
 
         public void CreatePost()
         {
@@ -27,6 +29,7 @@ namespace BlogApp.ViewModels
                 post.Text = Text;
                 post.Date = DateTime.Now;
                 post.UserID = userid;
+                post.Category = NewPostCategory;
                 db.Posts.Add(post);
                 db.SaveChanges();
                 Context.RedirectToRoute("MyProfile");

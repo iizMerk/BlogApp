@@ -131,6 +131,7 @@
     <Compile Include="Data\Comment.cs" />
     <Compile Include="Data\DatabaseBlog.cs" />
     <Compile Include="Data\Post.cs" />
+    <Compile Include="Data\PostCategory.cs" />
     <Compile Include="Data\User.cs" />
     <Compile Include="Data\UserRole.cs" />
     <Compile Include="Migrations\Configuration.cs" />
