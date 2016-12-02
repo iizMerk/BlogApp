@@ -8,22 +8,33 @@
     <title>MyProfile</title>
 </head>
 <body>
-    <h1>{{value: Message}}</h1>
-    <bs:GridView DataSource="{value: Posts}">
+    <%--TheGriedView And The Message(Title) --%>
+    <h1>{{value: Message}} <bs:Button Text="Create Post" Visible="{value:VisibleButton}" Click="{command: CreatePost()}" Type="Info"/></h1> 
+    <bs:GridView DataSource="{value: Posts}" ShowHeaderWhenNoData="true">
         <Columns>
-            <dot:GridViewTextColumn ValueBinding="{value: Title}" HeaderText="Title"/>
-            <dot:GridViewTextColumn ValueBinding="{value: Date}" HeaderText="Date"/>
+            <dot:GridViewTextColumn ValueBinding="{value: Title}" HeaderText="Title" />
+            <dot:GridViewTextColumn ValueBinding="{value: Date}" HeaderText="Date" />
             <dot:GridViewTemplateColumn>
                 <ContentTemplate>
-                   <dot:LinkButton Click="{command: _root.Show(PostID)}">Read <bs:GlyphIcon Icon="Book" /> </dot:LinkButton> 
+                    <dot:LinkButton Click="{command: _root.Show(PostID)}">Read
+                    <bs:GlyphIcon Icon="Book" /> </dot:LinkButton>
                 </ContentTemplate>
             </dot:GridViewTemplateColumn>
         </Columns>
     </bs:GridView>
-
+    <%--Modal View For Read Your Posts --%>
     <bs:ModalDialog IsDisplayed="{value: IsDisplayed}">
+        <HeaderTemplate>
+            <h1>{{value: TitlePost}}</h1>
+        </HeaderTemplate>
         <ContentTemplate>
-            <%--Tite and content of the post --%>
+            <table>
+                <tr>
+                    <td>
+                        <h2>{{value: TextPost}}</h2>
+                    </td>
+                </tr>
+            </table>
         </ContentTemplate>
     </bs:ModalDialog>
 </body>

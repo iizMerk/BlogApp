@@ -6,24 +6,36 @@ using DotVVM.Framework.ViewModel;
 using DotVVM.Framework.Controls;
 using System.Threading.Tasks;
 
+
 namespace BlogApp.ViewModels
 {
-	public class MyProfileViewModel : DotvvmViewModelBase
-	{
+    public class MyProfileViewModel : DotvvmViewModelBase
+    {
+        //Variables For The ShowPost
+        public string TitlePost { get; set; }
+        public string TextPost { get; set; }
+        //Variables For the MyProfilePage
         public bool IsDisplayed { get; set; } = false;
         public int postid { get; set; }
         public string Message { get; set; } = "My Posts";
         public bool VisibleButton { get; set; } = false;
         public void Show(int id)
         {
-            IsDisplayed = true;
             postid = id;
+            using (var db = new DatabaseBlog())
+            {
+                var post = db.Posts.Find(postid);
+                TitlePost = post.Title;
+                TextPost = post.Text;
+
+            }
+            IsDisplayed = true;
         }
         public GridViewDataSet<Post> Posts { get; set; } = new GridViewDataSet<Post>
         {
             SortDescending = false,
             SortExpression = nameof(Post.Date),
-            PageSize = 5           
+            PageSize = 5
         };
 
         public void CreatePost()
@@ -34,10 +46,13 @@ namespace BlogApp.ViewModels
         public override Task Load()
         {
             PostService.LoadMyPost(Posts);
-            if (Posts == null)
+            using (var db = new DatabaseBlog())
             {
-                Message = "No Post";
-                VisibleButton = true;
+                if (!db.Posts.Any())
+                {
+                    Message = "You don't have any post, create one";
+                    VisibleButton = true;
+                }
             }
             return base.Load();
         }
