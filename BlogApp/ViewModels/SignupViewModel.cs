@@ -10,8 +10,10 @@ namespace BlogApp.ViewModels
     public class SignupViewModel : DotvvmViewModelBase
     {
         [Required(ErrorMessage = "The Username is required")]
+        [MinLength(3)]
         public string Username { get; set; }
         [Required(ErrorMessage = "The password is required.")]
+        [MinLength(6,ErrorMessage="The password need to have min 6 characters.")]
         public string Password { get; set; }
         [Required(ErrorMessage= "The ConfirmPassword is required.")]
         [Compare("Password", ErrorMessage = "The Password and the ConfirmPassword need to be the same.")]

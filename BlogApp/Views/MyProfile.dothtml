@@ -1,0 +1,32 @@
+﻿@viewModel BlogApp.ViewModels.MyProfileViewModel, BlogApp
+
+<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title>MyProfile</title>
+</head>
+<body>
+    <h1>{{value: Message}}</h1>
+    <bs:GridView DataSource="{value: Posts}">
+        <Columns>
+            <dot:GridViewTextColumn ValueBinding="{value: Title}" HeaderText="Title"/>
+            <dot:GridViewTextColumn ValueBinding="{value: Date}" HeaderText="Date"/>
+            <dot:GridViewTemplateColumn>
+                <ContentTemplate>
+                   <dot:LinkButton Click="{command: _root.Show(PostID)}">Read <bs:GlyphIcon Icon="Book" /> </dot:LinkButton> 
+                </ContentTemplate>
+            </dot:GridViewTemplateColumn>
+        </Columns>
+    </bs:GridView>
+
+    <bs:ModalDialog IsDisplayed="{value: IsDisplayed}">
+        <ContentTemplate>
+            <%--Tite and content of the post --%>
+        </ContentTemplate>
+    </bs:ModalDialog>
+</body>
+</html>
+
+
