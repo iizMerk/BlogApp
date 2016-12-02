@@ -8,10 +8,14 @@
     <title>MyProfile</title>
 </head>
 <body style="background-color:#f0e3c9" class="container">
-    <h1>MyBlogApp
-    <bs:GlyphIcon Icon="Globe" /></h1>
+    <h1>
+        <a href="/">
+            MyBlogApp
+            <bs:GlyphIcon Icon="Globe" />
+        </a>
+    </h1>
     <%--TheGriedView And The Message(Title) --%>
-    <div  style="border:solid; border-radius:10px">
+    <div style="border:solid; border-radius:10px">
         <h1>
             {{value: Message}} <bs:Button Text="Create Post" Visible="{value:VisibleButton}" Click="{command: CreatePost()}" Type="Info" />
         </h1>

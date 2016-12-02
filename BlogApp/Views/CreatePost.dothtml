@@ -8,23 +8,30 @@
     <title>Create Post</title>
 </head>
 <body class="container" style="background-color:#f0e3c9">
-    <h1>MyBlogApp<bs:GlyphIcon Icon="Globe" /></h1>
+    <h1>
+        <a href="/">
+            MyBlogApp
+            <bs:GlyphIcon Icon="Globe" />
+        </a>
+    </h1>
     <table style="margin: 0 auto">
         <tr>
-            <td><dot:TextBox class="form-control" placeholder="Write the title here" style="margin:3px" Text="{value: Title}"/></td>
+            <td><dot:TextBox class="form-control" placeholder="Write the title here" style="margin:3px" Text="{value: Title}" /></td>
         </tr>
         <tr>
             <td><dot:TextBox class="form-control" placeholder="Write your post here" Type="MultiLine" style="margin:3px; min-width:500px;max-width:500px; min-height:500px" Text="{value: Text}" /></td>
         </tr>
         <tr>
-            <td><bs:Button style="margin:3px" Type="Info"  Click="{command: CreatePost()}" Text="Create">
-                <PostBack.Handlers>
-                    <bs:ModalConfirmPostBackHandler Message="You want to create this post?" AcceptButtonText="Create"/>
-                </PostBack.Handlers>              
-                </bs:Button></td>
+            <td>
+                <bs:Button style="margin:3px" Type="Info" Click="{command: CreatePost()}" Text="Create">
+                    <PostBack.Handlers>
+                        <bs:ModalConfirmPostBackHandler Message="You want to create this post?" AcceptButtonText="Create" />
+                    </PostBack.Handlers>
+                </bs:Button>
+            </td>
         </tr>
         <tr>
-            <td><dot:ValidationSummary/></td>
+            <td><dot:ValidationSummary /></td>
         </tr>
     </table>
 </body>

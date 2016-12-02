@@ -1,6 +1,5 @@
 ﻿.wrapper {
-    width: 70%;
-    margin: 0 auto;
+    margin-left:250px;
     background-color: #f0e3c9;
 }
 
@@ -16,10 +15,11 @@
 #sidebar {
     left: 0px;
     top: 0px;
+    bottom:0px;
     width: 250px;
     height: 100vh;
     background-color: #c0a988;
-    float: left;
+    position:fixed;
 }
 
 #ccc {
