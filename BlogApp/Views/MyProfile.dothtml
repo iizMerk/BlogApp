@@ -19,10 +19,8 @@
     </h1>
     <div style="width:100%; height:70px"></div>
     <%--TheGriedView And The Message(Title) --%>
+    <h1> {{value: Message}} <bs:Button Text="Create Post" Visible="{value:VisibleButton}" Click="{command: CreatePost()}" Type="Info" /></h1>
     <div style="border:solid; border-radius:10px">
-        <h1>
-            {{value: Message}} <bs:Button Text="Create Post" Visible="{value:VisibleButton}" Click="{command: CreatePost()}" Type="Info" />
-        </h1>
         <bs:GridView DataSource="{value: Posts}" ShowHeaderWhenNoData="true">
             <Columns>
                 <dot:GridViewTextColumn ValueBinding="{value: Title}" HeaderText="Title" />
