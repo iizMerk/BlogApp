@@ -9,21 +9,26 @@
     <meta charset="utf-8" />
     <title>Admin Panel</title>
 </head>
-<body>
+<body class="container" style="background-color:#f0e3c9">
     <%--Title --%>
     <h1>
-        Admin Panel
-        <bs:GlyphIcon Icon="Globe" />
+        <a class="blogapp" href="/">
+            MyBlogApp
+            <bs:GlyphIcon Icon="Globe" />
+        </a>
+        's Admin Panel
     </h1>
-
+    <div style="width:100%; height:70px"></div>
     <%--Button AddNewUser --%>
-    <bs:Button Type="Info" ButtonTagName="button" Click="{command: AddUser()}" Validation.Enabled="false">
-        <bs:GlyphIcon Icon="Plus" /> Create User
-    </bs:Button>
-    <h4>
-        Users
-        <bs:GlyphIcon Icon="User" />
-    </h4>
+    <table>
+        <tr>
+            <td><h4>Users<bs:GlyphIcon Icon="User" class="logincell"/></h4></td>
+            <td><bs:Button class="logincell" Type="Info" ButtonTagName="button" Click="{command: AddUser()}" Validation.Enabled="false"><bs:GlyphIcon Icon="Plus" />New User </bs:Button></td>
+        </tr>
+    </table>
+
+    
+    
     <%--GriedView User --%>
     <bs:GridView DataSource="{value: Users}">
         <Columns>
@@ -64,8 +69,10 @@
                     Read Post
                 </HeaderTemplate>
                 <ContentTemplate>
-                    <dot:LinkButton Validation.Enabled="false" style="font-size:15px" Type="Info" Click="{command: _root.Show(PostID)}">Read
-                    <bs:GlyphIcon Icon="Book" /></dot:LinkButton>
+                    <dot:LinkButton Validation.Enabled="false" style="font-size:15px" Type="Info" Click="{command: _root.Show(PostID)}">
+                        Read
+                        <bs:GlyphIcon Icon="Book" />
+                    </dot:LinkButton>
                 </ContentTemplate>
             </dot:GridViewTemplateColumn>
             <dot:GridViewTemplateColumn>
@@ -91,21 +98,21 @@
             <h2><b>New User</b></h2>
         </HeaderTemplate>
         <ContentTemplate>
-            <table>
+            <table style="margin: 0 auto; text-align:center; width: 70%">
                 <tr>
-                    <td><dot:TextBox placeholder="Username" Text="{value: Username}" /></td>
+                    <td><dot:TextBox class="form-control logincell" placeholder="Username" Text="{value: Username}" /></td>
                 </tr>
                 <tr>
-                    <td><dot:TextBox placeholder="Password" Text="{value: Password}" /></td>
+                    <td><dot:TextBox class="form-control logincell" placeholder="Password" Text="{value: Password}" /></td>
                 </tr>
                 <tr>
-                    <td><dot:TextBox placeholder="ConfirmPassword" Text="{value: ConfirmPassword}" /></td>
+                    <td><dot:TextBox class="form-control logincell" placeholder="ConfirmPassword" Text="{value: ConfirmPassword}" /></td>
                 </tr>
                 <tr>
-                    <td><dot:TextBox placeholder="Email" Text="{value: Email}" /></td>
+                    <td><dot:TextBox class="form-control logincell" placeholder="Email" Text="{value: Email}" /></td>
                 </tr>
                 <tr>
-                    <td><dot:TextBox placeholder="Country" Text="{value: Country}" /></td>
+                    <td><dot:TextBox class="form-control logincell" placeholder="Country" Text="{value: Country}" /></td>
                 </tr>
                 <tr>
                     <td>
@@ -121,7 +128,7 @@
             </bs:StyleDecorator>
         </ContentTemplate>
     </bs:ModalDialog>
-    
+
     <%--Modal View For Read Your Posts --%>
     <bs:ModalDialog IsDisplayed="{value: IsDisplayed}" Size="Large">
         <HeaderTemplate>

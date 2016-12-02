@@ -12,7 +12,7 @@
 </head>
 <body style="background-color:#f0e3c9">
     <div ID="sidebar">
-        <table style="margin-left:0px; width:250px; border:solid; text-align:center">
+        <table style="margin-left:0px; width:250px; text-align:center">
             <tr>
                 <dot:AuthenticatedView>
                     <AuthenticatedTemplate>
@@ -21,7 +21,7 @@
                                     <bs:GlyphIcon Icon="User" />MyProfile
                                 </dot:RouteLink></h4>
                         </td>
-                        <td style="border:solid">
+                        <td>
                             <h4><bs:GlyphIcon Icon="Log_out" StyleDecorator.TextColor="Danger" /><dot:LinkButton class="logincell" Text="Sign out" Click="{command: SignOut()}"></dot:LinkButton></h4>
                         </td>
                     </AuthenticatedTemplate>
@@ -29,6 +29,15 @@
                         <td><bs:Button class="logincell" Text="Sign in" Click="{command: Show()}"></bs:Button></td>
                     </NotAuthenticatedTemplate>
                 </dot:AuthenticatedView>
+            </tr>
+            <tr>
+                <td colspan="2">
+                        <bs:RouteLink class="logincell" RouteName="CreatePost" style="font-size:20px; margin:10px; border-radius:10px; border:solid" Type="Default">
+                            <bs:GlyphIcon Icon="Book" />
+                            <br />
+                            Create Post
+                        </bs:RouteLink>
+                </td>
             </tr>
         </table>
     </div>
@@ -39,12 +48,7 @@
                 <bs:GlyphIcon Icon="Globe" />
             </h1>
         </div>
-        <div style="text-align:center">
-            <bs:RouteLink RouteName="CreatePost" style="border:solid;border-radius:20px;font-size:20px" Type="Default">
-                <bs:GlyphIcon Icon="Book" /> <br />
-                Create Post
-            </bs:RouteLink>
-        </div>
+        
     </div>
 
     <!--modal dialog!!-->
@@ -72,6 +76,6 @@
              Not a member yet?  <bs:Button Text="SignUp" StyleDecorator.BackgroundColor="Primary" Click="{command: SignUp()}"></bs:Button>
         </FooterTemplate>
     </bs:ModalDialog>
-
+    <%--end modal dialog--%>
 </body>
 </html>
