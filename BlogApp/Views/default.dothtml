@@ -58,7 +58,7 @@
             </table>
         </ContentTemplate>
         <FooterTemplate>
-             <bs:Button Text="SignUp" Click="{command: SignUp()}"></bs:Button>
+             Not a member yet?  <bs:Button Text="SignUp" StyleDecorator.BackgroundColor="Primary" Click="{command: SignUp()}"></bs:Button>
         </FooterTemplate>
     </bs:ModalDialog>
 
