@@ -25,6 +25,7 @@ namespace BlogApp.ViewModels
         {
             using (var db = new DatabaseBlog())
             {
+                db.Configuration.LazyLoadingEnabled = false;
                 var query = from p in db.Posts
                             select p;
                 dataset.LoadFromQueryable(query);
@@ -35,6 +36,7 @@ namespace BlogApp.ViewModels
             var userid = Convert.ToInt32(UserService.GetCurrentUserId());
             using (var db = new DatabaseBlog())
             {
+                db.Configuration.LazyLoadingEnabled = false;
                 var query = from p in db.Posts
                             where p.UserID == userid
                             select p;

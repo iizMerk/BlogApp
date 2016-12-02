@@ -11,9 +11,9 @@ namespace BlogApp.ViewModels
     [Authorize]
 	public class CreatePostViewModel : DotvvmViewModelBase
 	{
-        [Required]
+        [Required(ErrorMessage ="The Title is Required.")]
         public string Title { get; set; }
-        [Required]
+        [Required(ErrorMessage ="The text is required.")]
         [MinLength(100,ErrorMessage = "Your Post need to have at least 100 characters.")]
         public string Text { get; set; }
 
@@ -29,6 +29,7 @@ namespace BlogApp.ViewModels
                 post.UserID = userid;
                 db.Posts.Add(post);
                 db.SaveChanges();
+                Context.RedirectToRoute("MyProfile");
             }
         }
     }

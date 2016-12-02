@@ -25,7 +25,7 @@ namespace BlogApp
         {
             config.RouteTable.Add("Default", "", "Views/default.dothtml");
             config.RouteTable.Add("Signup", "signup", "Views/signup.dothtml");
-            config.RouteTable.Add("CreatePost", "create/post", "Views/CreatePost.dothtml");
+            config.RouteTable.Add("CreatePost", "createpost", "Views/CreatePost.dothtml");
             config.RouteTable.Add("MyProfile", "myprofile", "Views/MyProfile.dothtml");
 
             // Uncomment the following line to auto-register all dothtml files in the Views folder

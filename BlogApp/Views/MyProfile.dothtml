@@ -7,7 +7,7 @@
     <meta charset="utf-8" />
     <title>MyProfile</title>
 </head>
-<body>
+<body style="background-color:#f0e3c9">
     <%--TheGriedView And The Message(Title) --%>
     <h1>{{value: Message}} <bs:Button Text="Create Post" Visible="{value:VisibleButton}" Click="{command: CreatePost()}" Type="Info"/></h1> 
     <bs:GridView DataSource="{value: Posts}" ShowHeaderWhenNoData="true">

@@ -17,7 +17,10 @@
             <td><dot:TextBox class="form-control" placeholder="Write your post here" Type="MultiLine" style="margin:3px; min-width:500px;max-width:500px; min-height:500px" Text="{value: Text}" /></td>
         </tr>
         <tr>
-            <td><bs:Button style="margin:3px" Type="Info" Text="Create" /></td>
+            <td><bs:Button style="margin:3px" Type="Info" Text="Create" Click="{command: CreatePost()}" /></td>
+        </tr>
+        <tr>
+            <td><dot:ValidationSummary/></td>
         </tr>
     </table>
 </body>
