@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace BlogApp.ViewModels
 {
-    public class MyProfileViewModel : DotvvmViewModelBase
+    public class MyProfileViewModel : DefaultViewModel
     {
         //Variables For The ShowPost
         public string TitlePost { get; set; }
@@ -31,7 +31,7 @@ namespace BlogApp.ViewModels
             }
             IsDisplayed = true;
         }
-        public GridViewDataSet<Post> Posts { get; set; } = new GridViewDataSet<Post>
+        public new GridViewDataSet<Post> Posts { get; set; } = new GridViewDataSet<Post>
         {
             SortDescending = false,
             SortExpression = nameof(Post.Date),

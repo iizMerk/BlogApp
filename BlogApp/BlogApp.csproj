@@ -140,6 +140,7 @@
     <Compile Include="Services\UserService.cs" />
     <Compile Include="Startup.cs" />
     <Compile Include="DotvvmStartup.cs" />
+    <Compile Include="ViewModels\AdminPageViewModel.cs" />
     <Compile Include="ViewModels\CreatePostViewModel.cs" />
     <Compile Include="ViewModels\DefaultViewModel.cs" />
     <Compile Include="ViewModels\MyProfileViewModel.cs" />
@@ -202,6 +203,7 @@
     <Content Include="Views\signup.dothtml" />
     <Content Include="Views\CreatePost.dothtml" />
     <Content Include="Views\MyProfile.dothtml" />
+    <Content Include="Views\AdminPage.dothtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

@@ -1,0 +1,143 @@
+﻿@viewModel BlogApp.ViewModels.AdminPageViewModel, BlogApp
+
+<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <link href="../Content/bootstrap.css" rel="stylesheet" />
+    <link href="../Scripts/StyleSheet.css" rel="stylesheet" />
+    <meta charset="utf-8" />
+    <title>Admin Panel</title>
+</head>
+<body>
+    <%--Title --%>
+    <h1>
+        Admin Panel
+        <bs:GlyphIcon Icon="Globe" />
+    </h1>
+
+    <%--Button AddNewUser --%>
+    <bs:Button Type="Info" ButtonTagName="button" Click="{command: AddUser()}" Validation.Enabled="false">
+        <bs:GlyphIcon Icon="Plus" /> Create User
+    </bs:Button>
+    <h4>
+        Users
+        <bs:GlyphIcon Icon="User" />
+    </h4>
+    <%--GriedView User --%>
+    <bs:GridView DataSource="{value: Users}">
+        <Columns>
+            <dot:GridViewTextColumn ValueBinding="{value: UserID}" HeaderText="UserID" />
+            <dot:GridViewTextColumn ValueBinding="{value: Username}" HeaderText="UserName" />
+            <dot:GridViewTextColumn ValueBinding="{value: Email}" HeaderText="Email" />
+            <dot:GridViewTextColumn ValueBinding="{value: Userrole}" HeaderText="User Role" />
+            <dot:GridViewTemplateColumn>
+                <HeaderTemplate>
+                    Commands
+                </HeaderTemplate>
+                <ContentTemplate>
+                    <bs:LinkButton StyleDecorator.TextColor="Danger" Click="{command: _root.DeleteUser(UserID)}" Validation.Enabled="false">
+                        <PostBack.Handlers>
+                            <bs:ModalConfirmPostBackHandler Message="You want to Delete this user?" AcceptButtonText="Delete" />
+                        </PostBack.Handlers>
+                        <bs:GlyphIcon Icon="Remove" />
+                        Delete
+                    </bs:LinkButton>
+                </ContentTemplate>
+            </dot:GridViewTemplateColumn>
+        </Columns>
+    </bs:GridView>
+
+    <%--GriedView For The Post--%>
+    <h4>
+        Posts
+        <bs:GlyphIcon Icon="Book" />
+    </h4>
+    <bs:GridView DataSource="{value: Posts}">
+        <Columns>
+            <dot:GridViewTextColumn HeaderText="PostID" ValueBinding="{value: PostID}" />
+            <dot:GridViewTextColumn HeaderText="UserID" ValueBinding="{value: UserID}" />
+            <dot:GridViewTextColumn HeaderText="Title" ValueBinding="{value: Title}" />
+            <dot:GridViewTextColumn HeaderText="Date" ValueBinding="{value: Date}" />
+            <dot:GridViewTemplateColumn>
+                <HeaderTemplate>
+                    Read Post
+                </HeaderTemplate>
+                <ContentTemplate>
+                    <dot:LinkButton Validation.Enabled="false" style="font-size:15px" Type="Info" Click="{command: _root.Show(PostID)}">Read
+                    <bs:GlyphIcon Icon="Book" /></dot:LinkButton>
+                </ContentTemplate>
+            </dot:GridViewTemplateColumn>
+            <dot:GridViewTemplateColumn>
+                <HeaderTemplate>
+                    Commands
+                </HeaderTemplate>
+                <ContentTemplate>
+                    <bs:LinkButton StyleDecorator.TextColor="Danger" Click="{command: _root.DeletePost(PostID)}">
+                        <PostBack.Handlers>
+                            <bs:ModalConfirmPostBackHandler Message="You want to delete this post?" AcceptButtonText="Delete" />
+                        </PostBack.Handlers>
+                        <bs:GlyphIcon Icon="Remove" /> Delete
+                    </bs:LinkButton>
+                </ContentTemplate>
+            </dot:GridViewTemplateColumn>
+        </Columns>
+    </bs:GridView>
+
+
+    <%--Modal Dialog For Add New User --%>
+    <bs:ModalDialog IsDisplayed="{value: AddUserVisible}">
+        <HeaderTemplate>
+            <h2><b>New User</b></h2>
+        </HeaderTemplate>
+        <ContentTemplate>
+            <table>
+                <tr>
+                    <td><dot:TextBox placeholder="Username" Text="{value: Username}" /></td>
+                </tr>
+                <tr>
+                    <td><dot:TextBox placeholder="Password" Text="{value: Password}" /></td>
+                </tr>
+                <tr>
+                    <td><dot:TextBox placeholder="ConfirmPassword" Text="{value: ConfirmPassword}" /></td>
+                </tr>
+                <tr>
+                    <td><dot:TextBox placeholder="Email" Text="{value: Email}" /></td>
+                </tr>
+                <tr>
+                    <td><dot:TextBox placeholder="Country" Text="{value: Country}" /></td>
+                </tr>
+                <tr>
+                    <td>
+                        <bs:ComboBoxGroup DataSource="{value: RoleList}" SelectedValue="{value: Role}" />
+                    </td>
+                </tr>
+                <tr>
+                    <td><bs:Button Text="Create" Type="Primary" Click="{command: SignUp()}" Validation.Enabled="true"></td>
+                </tr>
+            </table>
+            <bs:StyleDecorator TextColor="Danger">
+                <dot:ValidationSummary />
+            </bs:StyleDecorator>
+        </ContentTemplate>
+    </bs:ModalDialog>
+    
+    <%--Modal View For Read Your Posts --%>
+    <bs:ModalDialog IsDisplayed="{value: IsDisplayed}" Size="Large">
+        <HeaderTemplate>
+            <h1><b>{{value: TitlePost}}</b></h1>
+        </HeaderTemplate>
+        <ContentTemplate>
+            <table>
+                <tr>
+                    <td style="word-break:break-word">
+                        <h4>{{value: TextPost}}</h4>
+                    </td>
+                </tr>
+            </table>
+        </ContentTemplate>
+    </bs:ModalDialog>
+</body>
+</html>
+
+

@@ -7,7 +7,7 @@ using System.ComponentModel.DataAnnotations;
 
 namespace BlogApp.ViewModels
 {
-    public class SignupViewModel : DotvvmViewModelBase
+    public class SignupViewModel : MyProfileViewModel
     {
         [Required(ErrorMessage = "The Username is required")]
         [MinLength(3)]
@@ -25,6 +25,9 @@ namespace BlogApp.ViewModels
 
         public string ErrorMessage { get; set; }
 
+        public string[] RoleList { get; set; } = {"Guest","Admin" };
+        public UserRole Role { get; set; }
+
         public void SignUp()
         {
             using (var db = new DatabaseBlog())
@@ -34,6 +37,7 @@ namespace BlogApp.ViewModels
                 user.Password = Password;
                 user.Email = Email;
                 user.Country = Country;
+                user.Userrole = Role;
                 if (UserService.CheckEmail(Email) == true)
                 {
                     ErrorMessage = "The email is alredy taken";

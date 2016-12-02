@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNet.Identity;
+﻿using DotVVM.Framework.Controls;
+using Microsoft.AspNet.Identity;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -82,6 +83,16 @@ namespace BlogApp.ViewModels
                     return false;
                 }
 
+            }
+        }
+        public static void LoadUser(GridViewDataSet<User> Users)
+        {
+            using (var db = new DatabaseBlog())
+            {
+                db.Configuration.LazyLoadingEnabled = false;
+                var query = from p in db.Users
+                            select p;
+                Users.LoadFromQueryable(query);
             }
         }
     }
