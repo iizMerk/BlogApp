@@ -10,11 +10,38 @@ using BlogApp.ViewModels;
 
 namespace BlogApp.ViewModels
 {
-    [Authorize/*(roles: "Admin")*/]
+    [Authorize(roles: "Admin")]
 	public class AdminPageViewModel : SignupViewModel 
 	{
+        //Variables for Change Category and Add Users
         public bool AddUserVisible { get; set; } = false;
+        public bool ChangeCategoryVisible { get; set; } = false;
+        public string[] CategoryList { get; set; } = {"Post", "AdminPost", "HotPost"};
+        public string OldCategory { get; set; }
+        public PostCategory NewPostCategory { get; set; }
 
+        public void ShowChangeCategory(int id)
+        {
+            using (var db = new DatabaseBlog())
+            {
+                postid = id;
+                var post = db.Posts.Find(postid);
+                OldCategory = Convert.ToString(post.Category);
+                ChangeCategoryVisible = true;
+            }
+        }
+        public void ChangeCategory(int id)
+        {
+            using (var db = new DatabaseBlog())
+            {
+                var post = db.Posts.Find(id);
+                post.Category = NewPostCategory;
+                db.SaveChanges();
+                ChangeCategoryVisible = false;
+                PostService.LoadPost(Posts);
+                
+            }
+        }
         public void AddUser()
         {
             AddUserVisible = true;

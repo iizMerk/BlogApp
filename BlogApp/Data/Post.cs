@@ -18,6 +18,8 @@ namespace BlogApp.ViewModels
         public int UserID { get; set; }
 
         public DateTime Date { get; set; }
+
+        public PostCategory Category { get; set; }
         public virtual ICollection<Comment> Comment { get; set; } = new List<Comment>();
     }
 }
