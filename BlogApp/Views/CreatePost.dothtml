@@ -5,7 +5,7 @@
 <html lang="en" xmlns="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="utf-8" />
-    <title></title>
+    <title>Create Post</title>
 </head>
 <body class="container" style="background-color:#f0e3c9">
     <h1>MyBlogApp<bs:GlyphIcon Icon="Globe" /></h1>

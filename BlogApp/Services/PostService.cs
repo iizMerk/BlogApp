@@ -30,5 +30,17 @@ namespace BlogApp.ViewModels
                 dataset.LoadFromQueryable(query);
             }
         }
+        public static void LoadMyPost(GridViewDataSet<Post> dataset)
+        {
+            var userid = Convert.ToInt32(UserService.GetCurrentUserId());
+            using (var db = new DatabaseBlog())
+            {
+                var query = from p in db.Posts
+                            where p.UserID == userid
+                            select p;
+
+                dataset.LoadFromQueryable(query);
+            }
+        }
     }
 }
