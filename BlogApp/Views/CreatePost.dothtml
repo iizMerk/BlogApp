@@ -5,11 +5,12 @@
 <html lang="en" xmlns="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="utf-8" />
+    <link href="../Scripts/StyleSheet.css" rel="stylesheet" />
     <title>Create Post</title>
 </head>
 <body class="container" style="background-color:#f0e3c9">
     <h1>
-        <a href="/">
+        <a class="blogapp" href="/">
             MyBlogApp
             <bs:GlyphIcon Icon="Globe" />
         </a>
@@ -36,5 +37,3 @@
     </table>
 </body>
 </html>
-
-

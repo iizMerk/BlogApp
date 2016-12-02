@@ -12,21 +12,17 @@
 </head>
 <body style="background-color:#f0e3c9">
     <div ID="sidebar">
-        <table style="margin:0 auto">
+        <table style="margin-left:0px; width:250px; border:solid; text-align:center">
             <tr>
                 <dot:AuthenticatedView>
                     <AuthenticatedTemplate>
                         <td>
-                            <h4>
-                                <dot:RouteLink RouteName="MyProfile">
+                            <h4><dot:RouteLink RouteName="MyProfile">
                                     <bs:GlyphIcon Icon="User" />MyProfile
-                                </dot:RouteLink>
-                            </h4>
+                                </dot:RouteLink></h4>
                         </td>
-                        <td>
-                            <h4>
-                                <bs:GlyphIcon Icon="Log_out" StyleDecorator.TextColor="Danger" /><dot:LinkButton class="logincell" Text="Sign out" Click="{command: SignOut()}"></dot:LinkButton>
-                            </h4>
+                        <td style="border:solid">
+                            <h4><bs:GlyphIcon Icon="Log_out" StyleDecorator.TextColor="Danger" /><dot:LinkButton class="logincell" Text="Sign out" Click="{command: SignOut()}"></dot:LinkButton></h4>
                         </td>
                     </AuthenticatedTemplate>
                     <NotAuthenticatedTemplate>

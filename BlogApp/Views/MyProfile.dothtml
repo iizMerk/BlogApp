@@ -5,15 +5,17 @@
 <html lang="en" xmlns="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="utf-8" />
+    <link href="../Scripts/StyleSheet.css" rel="stylesheet" />
     <title>MyProfile</title>
 </head>
 <body style="background-color:#f0e3c9" class="container">
     <h1>
-        <a href="/">
+        <a class="blogapp" href="/">
             MyBlogApp
             <bs:GlyphIcon Icon="Globe" />
         </a>
     </h1>
+    <div style="width:100%; height:70px"></div>
     <%--TheGriedView And The Message(Title) --%>
     <div style="border:solid; border-radius:10px">
         <h1>
