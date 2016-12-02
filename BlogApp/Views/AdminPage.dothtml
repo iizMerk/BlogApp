@@ -56,13 +56,14 @@
     <%--GriedView For The Post--%>
     <h4>
         Posts
-        <bs:GlyphIcon Icon="Book" />
+        <bs:GlyphIcon Icon="Book" /> <bs:RouteLink Type="Info" RouteName="CreatePost"><bs:GlyphIcon Icon="Plus"/>Create Post</bs:RouteLink>
     </h4>
     <bs:GridView DataSource="{value: Posts}">
         <Columns>
             <dot:GridViewTextColumn HeaderText="PostID" ValueBinding="{value: PostID}" />
             <dot:GridViewTextColumn HeaderText="UserID" ValueBinding="{value: UserID}" />
             <dot:GridViewTextColumn HeaderText="Title" ValueBinding="{value: Title}" />
+            <dot:GridViewTextColumn HeaderText="Category" ValueBinding="{value: Category}"/>
             <dot:GridViewTextColumn HeaderText="Date" ValueBinding="{value: Date}" />
             <dot:GridViewTemplateColumn>
                 <HeaderTemplate>
@@ -85,6 +86,9 @@
                             <bs:ModalConfirmPostBackHandler Message="You want to delete this post?" AcceptButtonText="Delete" />
                         </PostBack.Handlers>
                         <bs:GlyphIcon Icon="Remove" /> Delete
+                    </bs:LinkButton>
+                    <bs:LinkButton StyleDecorator.TextColor="Info" Click="{command: _root.ShowChangeCategory(PostID)}" Validation.Enabled="false">
+                        <bs:GlyphIcon Icon="Edit"/> ChangeCategory
                     </bs:LinkButton>
                 </ContentTemplate>
             </dot:GridViewTemplateColumn>
@@ -143,6 +147,20 @@
                 </tr>
             </table>
         </ContentTemplate>
+    </bs:ModalDialog>
+
+    <%--Modal View For Change Category --%>
+    <bs:ModalDialog IsDisplayed="{value: ChangeCategoryVisible}">
+        <HeaderTemplate>
+            <h2><b>Change Category</b></h2>
+        </HeaderTemplate>
+        <ContentTemplate>
+            <h4>Last Category <bs:StyleDecorator TextColor="Warning">{{value: OldCategory}}</bs:StyleDecorator></h4> <br />
+            <bs:ComboBoxGroup SelectedValue="{value: NewPostCategory}" DataSource="{value: CategoryList}" />
+        </ContentTemplate>
+        <FooterTemplate>
+            <bs:Button Text="Save Changes" Type="Warning" ButtonTagName="button" Click="{command: ChangeCategory(postid)}" Validation.Enabled="false"></bs:Button>
+        </FooterTemplate>
     </bs:ModalDialog>
 </body>
 </html>
