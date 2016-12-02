@@ -17,12 +17,16 @@
                 <dot:AuthenticatedView>
                     <AuthenticatedTemplate>
                         <td>
-                            <h4><dot:RouteLink RouteName="MyProfile">
+                            <h4>
+                                <dot:RouteLink RouteName="MyProfile">
                                     <bs:GlyphIcon Icon="User" />MyProfile
-                                </dot:RouteLink></h4>
+                                </dot:RouteLink>
+                            </h4>
                         </td>
                         <td>
-                            <h4><bs:GlyphIcon Icon="Log_out" StyleDecorator.TextColor="Danger" /><dot:LinkButton class="logincell" Text="Sign out" Click="{command: SignOut()}"></dot:LinkButton></h4>
+                            <h4>
+                                <bs:GlyphIcon Icon="Log_out" StyleDecorator.TextColor="Danger" /><dot:LinkButton class="logincell" Text="Sign out" Click="{command: SignOut()}"></dot:LinkButton>
+                            </h4>
                         </td>
                     </AuthenticatedTemplate>
                     <NotAuthenticatedTemplate>
@@ -31,20 +35,27 @@
                 </dot:AuthenticatedView>
             </tr>
             <tr>
-                <td colspan="2">
-                        <bs:RouteLink class="logincell" RouteName="CreatePost" style="font-size:20px; margin:10px; border-radius:10px; border:solid" Type="Default">
-                            <bs:GlyphIcon Icon="Book" />
+                <dot:RoleView Roles="Admin">
+                    <td colspan="2">
+                        <bs:RouteLink class="logincell" RouteName="AdminPage" style="font-size:20px; margin:10px; border-radius:10px; border:solid;width:200px" Type="Default">
+                            <bs:GlyphIcon Icon="Stats" />
                             <br />
-                            Create Post
+                            Admin Panel
                         </bs:RouteLink>
+                    </td>
+                </dot:RoleView>
+            </tr>
+            <tr>
+                <td colspan="2">
+                    <bs:RouteLink class="logincell" RouteName="CreatePost" style="font-size:20px; margin:10px; border-radius:10px; border:solid;width:200px" Type="Default">
+                        <bs:GlyphIcon Icon="Book" />
+                        <br />
+                        Create Post
+                    </bs:RouteLink>
                 </td>
             </tr>
         </table>
-        <bs:RouteLink class="logincell" RouteName="CreatePost" style="font-size:20px; margin:10px; border-radius:10px; border:solid" Type="Default">
-            <bs:GlyphIcon Icon="Book" />
-            <br />
-            Create Post
-        </bs:RouteLink>
+       
     </div>
     <div class="wrapper">
         <div class="jumbotron" ID="divjumbo">

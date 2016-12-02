@@ -155,7 +155,7 @@
             <h2><b>Change Category</b></h2>
         </HeaderTemplate>
         <ContentTemplate>
-            <h4>Last Category <bs:StyleDecorator TextColor="Warning">{{value: OldCategory}}</bs:StyleDecorator></h4> <br />
+            <h4>Last Category: <span style="color:saddlebrown"><b>{{value: OldCategory}}</b></span></h4> <br />
             <bs:ComboBoxGroup SelectedValue="{value: NewPostCategory}" DataSource="{value: CategoryList}" />
         </ContentTemplate>
         <FooterTemplate>
