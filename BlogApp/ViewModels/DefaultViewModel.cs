@@ -19,6 +19,8 @@ namespace BlogApp.ViewModels
         public string ConfirmPassword { get; set; }
         public string Email { get; set; }
         public bool IsVisible { get; set; } = false;
+
+        public int PageSize { get; set; }
        
 
         //Variable For the Post
@@ -55,6 +57,10 @@ namespace BlogApp.ViewModels
             }
         }
 
+        public void LoadMore()
+        {
+            PageSize = PageSize + 4;
+        }
         public void SignOut()
         {
             Context.OwinContext.Authentication.SignOut();
@@ -93,8 +99,9 @@ namespace BlogApp.ViewModels
         public GridViewDataSet<Post> Posts { get; set; } = new GridViewDataSet<Post>()
         {
             SortExpression = nameof(Post.Date),
-            SortDescending = false,
-            PageSize = 4
+            SortDescending = true,
+            PageSize = Convert.ToInt32(nameof(PageSize))
+            
         };
 
         public string GetCreatorName(int userid)
@@ -110,6 +117,7 @@ namespace BlogApp.ViewModels
         public override Task Load()
         {
            PostService.LoadPost(Posts);
+            PageSize = 4;
             return base.Load();
         }      
     }
