@@ -17,6 +17,8 @@ namespace BlogApp.ViewModels
 
         public int UserID { get; set; }
 
+        public string CreatorName { get; set; }
+
         public DateTime Date { get; set; }
 
         public PostCategory Category { get; set; }

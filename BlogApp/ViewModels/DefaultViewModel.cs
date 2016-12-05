@@ -19,6 +19,7 @@ namespace BlogApp.ViewModels
         public string ConfirmPassword { get; set; }
         public string Email { get; set; }
         public bool IsVisible { get; set; } = false;
+       
 
         //Variable For the Post
 
@@ -96,9 +97,19 @@ namespace BlogApp.ViewModels
             PageSize = 4
         };
 
+        public string GetCreatorName(int userid)
+        {
+            using (var db = new DatabaseBlog())
+            {
+                var user = db.Users.Find(userid);
+                return user.Username.ToString();
+            }
+        }
+        
+
         public override Task Load()
         {
-           // PostService.LoadPost(Posts);
+           PostService.LoadPost(Posts);
             return base.Load();
         }      
     }

@@ -24,12 +24,14 @@ namespace BlogApp.ViewModels
             var userid = Convert.ToInt32(UserService.GetCurrentUserId());
             using (var db = new DatabaseBlog())
             {
+                var user = db.Users.Find(userid);
                 var post = new Post();
                 post.Title = Title;
                 post.Text = Text;
                 post.Date = DateTime.Now;
                 post.UserID = userid;
                 post.Category = NewPostCategory;
+                post.CreatorName = user.Username.ToString();
                 db.Posts.Add(post);
                 db.SaveChanges();
                 Context.RedirectToRoute("MyProfile");
