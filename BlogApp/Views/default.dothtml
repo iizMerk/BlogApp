@@ -146,19 +146,21 @@
     </bs:ModalDialog>
     <%--end modal dialog--%>
     <!--modal dialog for comments!!-->
-    <bs:ModalDialog >
+    <bs:ModalDialog IsDisplayed="{{value: CommentVisible}}">
         <HeaderTemplate>
             <h4 style="text-align:center; font-weight:300">Comments</h4>
         </HeaderTemplate>
         <ContentTemplate>
-            <div style="width:100%">
-                <b>Nomeutente </b>lalalala
-                <hr />
-                <b>Altroutente </b>lolololo
-            </div>
+            <dot:Repeater DataSource="{value: Comments}">
+                <div style="width:100%">
+                    <b>{{value: Username}} </b>{{value: comment}}
+                    <hr />
+                </div>
+            </dot:Repeater>
             <div style="width:100%;height:20px"></div>
             <div>
-                <dot:TextBox class="text-left" placeholder="Write your comment" Text="ciao"></dot:TextBox><dot:Button class="form-group">Comment</dot:Button>
+                <dot:TextBox class="text-left" placeholder="Write your comment" Text="ciao"></dot:TextBox>
+                <dot:Button class="form-group" Click="{{command: CreateComment(pid)}}">Comment</dot:Button>
             </div>
         </ContentTemplate>
     </bs:ModalDialog>

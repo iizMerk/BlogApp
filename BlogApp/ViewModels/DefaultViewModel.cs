@@ -56,7 +56,7 @@ namespace BlogApp.ViewModels
             CommentService.LoadComments(postid,Comments);
             CommentVisible = true;
         }
-        public void CreatePost(int postid)
+        public void CreateComment(int postid)
         {
             using (var db = new DatabaseBlog())
             {
@@ -79,6 +79,7 @@ namespace BlogApp.ViewModels
                     CommentText = "";
                     CommentErrorColor = "green";
                     CommentError = "Your comment as been published successfully.";
+                    CommentService.LoadComments(postid, Comments);
                 }
 
             }
