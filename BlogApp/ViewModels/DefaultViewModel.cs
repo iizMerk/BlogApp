@@ -152,7 +152,7 @@ namespace BlogApp.ViewModels
         public void CheckImportantPost()
         {
 
-            if (Posts.TotalItemsCount <= Posts.PageSize)
+            if (ImportantPosts.TotalItemsCount <= ImportantPosts.PageSize)
             {
                 ImportantPostVisible = false;
                 ImportantPostMessage = "No other important post to load.";
