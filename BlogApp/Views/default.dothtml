@@ -61,9 +61,10 @@
                 </td>
             </tr>
         </table>
-       
     </div>
+
     <div class="wrapper">
+        <div style="background-color:green; float:right;">Total Posts: {{value: PostCount}}</div>
         <div class="jumbotron" ID="divjumbo"  >
             <h1 class="wow fadeInDown">
                 {{value: BlogAppTitle}}
