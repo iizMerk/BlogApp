@@ -70,7 +70,7 @@
                 <bs:GlyphIcon Icon="Globe" />
             </h1>
         </div>
-        <dot:Repeater DataSource="{{value: Posts}}">
+        <dot:Repeater DataSource="{{value: Posts}}" >
             <div class="container">
                 <div class="wow slideInUp" style="margin-left:5px;margin-right:5px;margin-top:10px; background-color:antiquewhite; border-radius:7px; width:100%">
                     <div style="margin-left:15px;padding-top:15px">
