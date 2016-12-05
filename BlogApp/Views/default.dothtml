@@ -64,7 +64,7 @@
     </div>
 
     <div class="wrapper">
-        <div style="background-color:green; float:right;">Total Posts: {{value: PostCount}}</div>
+        <div style="float:right; border-bottom:solid;border-left:solid; border-bottom-left-radius:5px"><div style="padding:5px">Total Posts: {{value: PostCount}}</div></div>
         <div class="jumbotron" ID="divjumbo"  >
             <h1 class="wow fadeInDown">
                 {{value: BlogAppTitle}}
@@ -87,7 +87,7 @@
                     </div>
                 </div>
             </dot:Repeater>
-            <div style="text-align:center; height:300px">
+            <div style="text-align:center; height:30px">
                 <bs:Button style="" Click="{command: LoadMoreImportantPost()}" Visible="{value:ImportantPostVisible}">LoadMore</bs:Button>
                 {{value: ImportantPostMessage}}
             </div>
