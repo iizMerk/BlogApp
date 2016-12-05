@@ -19,10 +19,15 @@ namespace BlogApp.ViewModels
         public string ConfirmPassword { get; set; }
         public string Email { get; set; }
         public bool IsVisible { get; set; } = false;
-
+        //For Load More Posts
         public bool LoadMoreVisible { get; set; }
-        public string  LoadMoreMessage { get; set; }
-       
+        public string LoadMoreMessage { get; set; }
+
+        //For Load More ImportantPosts
+        public string ImportantPostMessage { get; set; }
+        public bool ImportantPostVisible { get; set; }
+
+        public int PostCount { get; set; }
 
         //Variable For the Post
 
@@ -60,9 +65,16 @@ namespace BlogApp.ViewModels
 
         public void LoadMore()
         {
-            Posts.PageSize = Posts.PageSize+4;
+            Posts.PageSize = Posts.PageSize + 4;
             PostService.LoadPost(Posts);
             CheckLoadMore();
+        }
+
+        public void LoadMoreImportantPost()
+        {
+            ImportantPosts.PageSize = ImportantPosts.PageSize + 1;
+            PostService.LoadImportantPost(ImportantPosts);
+            CheckImportantPost();
         }
         public void SignOut()
         {
@@ -83,7 +95,7 @@ namespace BlogApp.ViewModels
             else
             {
                 Context.RedirectToRoute("CreatePost");
-            }   
+            }
         }
 
         public void Show()
@@ -104,7 +116,14 @@ namespace BlogApp.ViewModels
             SortExpression = nameof(Post.Date),
             SortDescending = true,
             PageSize = 4
-            
+
+        };
+
+        public GridViewDataSet<Post> ImportantPosts { get; set; } = new GridViewDataSet<Post>()
+        {
+            SortExpression = nameof(Post.Date),
+            SortDescending = true,
+            PageSize = 1
         };
 
         public string GetCreatorName(int userid)
@@ -115,7 +134,7 @@ namespace BlogApp.ViewModels
                 return user.Username.ToString();
             }
         }
-        
+
         public void CheckLoadMore()
         {
             if (Posts.TotalItemsCount <= Posts.PageSize)
@@ -129,12 +148,32 @@ namespace BlogApp.ViewModels
                 LoadMoreVisible = true;
             }
         }
+
+        public void CheckImportantPost()
+        {
+
+            if (Posts.TotalItemsCount <= Posts.PageSize)
+            {
+                ImportantPostVisible = false;
+                ImportantPostMessage = "No other important post to load.";
+            }
+            else
+            {
+                LoadMoreMessage = "";
+                LoadMoreVisible = true;
+            }
+
+        }
         public override Task Load()
         {
-           PostService.LoadPost(Posts);
+            PostService.LoadImportantPost(ImportantPosts);
+            PostService.LoadPost(Posts);
             CheckLoadMore();
+            CheckImportantPost();
+            PostCount = Posts.TotalItemsCount;
+            ImportantPosts.PageSize = 1;
             Posts.PageSize = 4;
             return base.Load();
-        }      
+        }
     }
 }

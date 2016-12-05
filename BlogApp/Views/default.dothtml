@@ -72,17 +72,23 @@
         </div>
         <div class="container">
             <h1>Important posts:</h1>
-            <div class="wow slideInUp" style="margin-left:5px;margin-right:5px;margin-top:10px; background-color:antiquewhite; border-radius:7px; width:100%">
-                <div style="margin-left:15px;padding-top:15px">
-                    <h2 style="font-weight:500; word-break:break-word; display:inline">aaaa</h2> <h6 style="display:inline; vertical-align:text-bottom">by</h6>
-                    <h5 style="font-weight:400; display:inline; vertical-align:text-bottom"> dddd </h5>
+            <dot:Repeater DataSource="{value: ImportantPosts}">
+                <div class="wow slideInUp" style="margin-left:5px;margin-right:5px;margin-top:10px; background-color:antiquewhite; border-radius:7px; width:100%">
+                    <div style="margin-left:15px;padding-top:15px">
+                        <h2 style="font-weight:500; word-break:break-word; display:inline">{{value: Title}}</h2> <h6 style="display:inline; vertical-align:text-bottom">by</h6>
+                        <h5 style="font-weight:400; display:inline; vertical-align:text-bottom"> {{value: CreatorName}} </h5>
+                    </div>
+                    <hr />
+                    <div style="margin:15px; padding-bottom:15px">
+                        <h3 style="word-break:break-word">
+                            {{value: Text}}
+                        </h3>
+                    </div>
                 </div>
-                <hr />
-                <div style="margin:15px; padding-bottom:15px">
-                    <h3 style="word-break:break-word">
-                        sssss
-                    </h3>
-                </div>
+            </dot:Repeater>
+            <div style="text-align:center; height:300px">
+                <bs:Button style="" Click="{command: LoadMoreImportantPost()}" Visible="{value:ImportantPostVisible}">LoadMore</bs:Button>
+                {{value: ImportantPostMessage}}
             </div>
             <h1>Latest posts:</h1>
             <dot:Repeater DataSource="{{value: Posts}}">

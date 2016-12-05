@@ -21,6 +21,19 @@ namespace BlogApp.ViewModels
             }
         }
 
+        public static void LoadImportantPost(GridViewDataSet<Post> dataset)
+        {
+            using (var db = new DatabaseBlog())
+            {
+                db.Configuration.LazyLoadingEnabled = false;
+                var query = from p in db.Posts
+                            where p.Category == PostCategory.AdminPost
+                            select p;
+
+                dataset.LoadFromQueryable(query);
+            }
+        }
+
         public static void LoadPost(GridViewDataSet<Post> dataset)
         {
             using (var db = new DatabaseBlog())
