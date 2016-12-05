@@ -6,34 +6,39 @@
 <head>
     <link href="../Content/bootstrap.css" rel="stylesheet" />
     <link href="../Scripts/StyleSheet.css" rel="stylesheet" />
+    <link href="../Content/animate.css" rel="stylesheet" />
+    <script src="../Scripts/wow.min.js"></script>
+    <script>
+        new WOW().init();
+    </script>
     <meta charset="utf-8" />
     <link href="../Scripts/StyleSheet.css" rel="stylesheet" />
     <title>Create Post</title>
 </head>
 <body class="container" style="background-color:#f0e3c9">
     <h1>
-        <a class="blogapp" href="/">
+        <a class="blogapp wow fadeInLeft" href="/">
             MyBlogApp
             <bs:GlyphIcon Icon="Globe" />
         </a>
     </h1>
     <table style="margin: 0 auto">
         <tr>
-            <td><dot:TextBox class="form-control" placeholder="Write the title here" style="margin:3px" Text="{value: Title}" /></td>
+            <td class="wow bounceInRight" data-wow-delay="0"><dot:TextBox class="form-control" placeholder="Write the title here" style="margin:3px" Text="{value: Title}" /></td>
         </tr>
         <tr>
-            <td><dot:TextBox class="form-control" placeholder="Write your post here" Type="MultiLine" style="margin:3px; min-width:500px;max-width:500px; min-height:500px" Text="{value: Text}" /></td>
+            <td class="wow bounceInLeft" data-wow-delay="0"><dot:TextBox class="form-control" placeholder="Write your post here" Type="MultiLine" style="margin:3px; min-width:500px;max-width:500px; min-height:500px" Text="{value: Text}" /></td>
         </tr>
         <tr>
             <dot:RoleView Roles="Admin">
-                <td>
+                <td class="fadeInDown">
                     <bs:ComboBoxGroup SelectedValue="{value: NewPostCategory}" DataSource="{value: CategoryList}" />
                 </td>
             </dot:RoleView>
         </tr>
         <tr>
             <td>
-                <bs:Button style="margin:3px" Type="Info" Click="{command: CreatePost()}" Text="Create">
+                <bs:Button class="wow fadeIn"style="margin:3px" Type="Info" Click="{command: CreatePost()}" Text="Create">
                     <PostBack.Handlers>
                         <bs:ModalConfirmPostBackHandler Message="You want to create this post?" AcceptButtonText="Create" />
                     </PostBack.Handlers>

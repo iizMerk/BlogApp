@@ -33,6 +33,16 @@
                         </dot:LinkButton>
                     </ContentTemplate>
                 </dot:GridViewTemplateColumn>
+                <dot:GridViewTemplateColumn>
+                    <ContentTemplate>
+                        <bs:Button Type="Danger" Click="{command:_root.Delete(PostID)}" ButtonTagName="button">
+                        <PostBack.Handlers>
+                           <bs:ModalConfirmPostBackHandler Message="You want to delete this post?"/>
+                        </PostBack.Handlers>
+                            Delete<bs:GlyphIcon Icon="Remove"/>
+                            </bs:Button>
+                    </ContentTemplate>
+                </dot:GridViewTemplateColumn>
             </Columns>
         </bs:GridView>
     </div>

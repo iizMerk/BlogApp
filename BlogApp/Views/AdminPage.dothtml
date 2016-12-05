@@ -6,13 +6,18 @@
 <head>
     <link href="../Content/bootstrap.css" rel="stylesheet" />
     <link href="../Scripts/StyleSheet.css" rel="stylesheet" />
+    <link href="../Content/animate.css" rel="stylesheet" />
+    <script src="../Scripts/wow.min.js"></script>
+    <script>
+        new WOW().init();
+    </script>
     <meta charset="utf-8" />
     <title>Admin Panel</title>
 </head>
 <body class="container" style="background-color:#f0e3c9">
     <%--Title --%>
     <h1>
-        <a class="blogapp" href="/">
+        <a class="blogapp wow fadeIn" href="/">
             MyBlogApp
             <bs:GlyphIcon Icon="Globe" />
         </a>
@@ -30,7 +35,7 @@
     
     
     <%--GriedView User --%>
-    <bs:GridView DataSource="{value: Users}">
+    <bs:GridView DataSource="{value: Users}" class="wow slideInRight">
         <Columns>
             <dot:GridViewTextColumn ValueBinding="{value: UserID}" HeaderText="UserID" />
             <dot:GridViewTextColumn ValueBinding="{value: Username}" HeaderText="UserName" />
@@ -52,13 +57,15 @@
             </dot:GridViewTemplateColumn>
         </Columns>
     </bs:GridView>
+    <bs:DataPager DataSet="{value: Users}">
+    </bs:DataPager>
 
     <%--GriedView For The Post--%>
     <h4>
         Posts
         <bs:GlyphIcon Icon="Book" /> <bs:RouteLink Type="Info" RouteName="CreatePost"><bs:GlyphIcon Icon="Plus"/>Create Post</bs:RouteLink>
     </h4>
-    <bs:GridView DataSource="{value: Posts}">
+    <bs:GridView DataSource="{value: Posts}" class="wow slideInLeft">
         <Columns>
             <dot:GridViewTextColumn HeaderText="PostID" ValueBinding="{value: PostID}" />
             <dot:GridViewTextColumn HeaderText="UserID" ValueBinding="{value: UserID}" />
@@ -94,6 +101,7 @@
             </dot:GridViewTemplateColumn>
         </Columns>
     </bs:GridView>
+    <bs:DataPager DataSet="{value: Posts}"></bs:DataPager>
 
 
     <%--Modal Dialog For Add New User --%>
