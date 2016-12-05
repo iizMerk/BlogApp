@@ -115,7 +115,8 @@
                         </div>
                         <hr />
                         <div style="text-align:right">
-                            <bs:Button style="padding:5px; margin:7px" Click="{command: _root.ShowComment(PostID)}">Comments</bs:Button>
+                            <bs:Button style="padding:5px; margin:7px" Click="{command: _root.ShowComment(PostID)}">Comments </bs:Button>
+                            <span>{{value: CommentCount}}</span> <bs:GlyphIcon Icon="Comment"/>
                         </div>
                     </div>
                 </dot:Repeater>
