@@ -76,10 +76,10 @@
         </div>
         <div class="container">
             <%-- important posts --%>
-            <div style="background-color:rgba(128,128,128,0.2); padding:20px; border-radius:10px">
+            <div class="wow slideInUp" style="background-color:rgba(128,128,128,0.2); padding:20px; border-radius:10px">
                 <h1>Important posts:</h1>
                 <dot:Repeater DataSource="{value: ImportantPosts}">
-                    <div class="wow slideInUp" style="margin-left:5px;margin-right:5px;margin-top:10px; background-color:antiquewhite; border-radius:7px; width:100%">
+                    <div style="margin-left:5px;margin-right:5px;margin-top:10px; background-color:antiquewhite; border-radius:7px; width:100%">
                         <div style="margin-left:15px;padding-top:15px">
                             <h2 style="font-weight:500; word-break:break-word; display:inline">{{value: Title}}</h2> <h6 style="display:inline; vertical-align:text-bottom">by</h6>
                             <h5 style="font-weight:400; display:inline; vertical-align:text-bottom"> {{value: CreatorName}} </h5>
@@ -93,16 +93,16 @@
                     </div>
                 </dot:Repeater>
                 <div style="text-align:center">
-                    <bs:Button  Click="{command: LoadMoreImportantPost()}" Visible="{value:ImportantPostVisible}">Load more </bs:Button>
+                    <bs:Button Click="{command: LoadMoreImportantPost()}" Visible="{value:ImportantPostVisible}">Load more </bs:Button>
                     {{value: ImportantPostMessage}}
                 </div>
             </div>
             <%-- end important posts --%>
             <%-- user posts --%>
-            <div>
+            <div class="wow slideInUp">
                 <h1>Latest posts:</h1>
                 <dot:Repeater DataSource="{{value: Posts}}">
-                    <div class="wow slideInUp" style="margin-left:5px;margin-right:5px;margin-top:10px; background-color:antiquewhite; border-radius:7px; width:100%">
+                    <div style="margin-left:5px;margin-right:5px;margin-top:10px; background-color:antiquewhite; border-radius:7px; width:100%">
                         <div style="margin-left:15px;padding-top:15px">
                             <h2 style="font-weight:500; word-break:break-word; display:inline">{{value: Title}}</h2> <h6 style="display:inline; vertical-align:text-bottom">by</h6>
                             <h5 style="font-weight:400; display:inline; vertical-align:text-bottom"> -{{value: CreatorName}}- </h5>
@@ -114,10 +114,14 @@
                             </h3>
                         </div>
                         <hr />
-                        <div style="text-align:right">
-                            <bs:Button style="padding:5px; margin:7px" Click="{command: _root.ShowComment(PostID)}">Comments </bs:Button>
-                            <span>{{value: CommentCount}}</span> <bs:GlyphIcon Icon="Comment"/>
+                    </div>
+
+                    <div class="input-group" style="text-align:right">
+                        <span class="input-group-addon">{{value: CommentCount}}<bs:GlyphIcon Icon="Comment" /></span>
+                        <div >
+                            <bs:Button style="padding:5px; margin:7px" Click="{command: _root.ShowComment(PostID)}" ButtonTagName="button">Comments </bs:Button>
                         </div>
+
                     </div>
                 </dot:Repeater>
             </div>
@@ -166,8 +170,13 @@
         <ContentTemplate>
             <div style="overflow:auto; min-height:500px; max-height:500px; margin-left:0px;margin-right:0px">
                 <dot:Repeater DataSource="{value: Comments}">
-                    <div style="width:100%" >
-                       <b >{{value: Username}} </b> <span style="word-break:break-all">{{value: comment}}</span>
+                    <div style="width:100%">
+                        <div style="float:right">
+                            <bs:GlyphIcon Icon="Remove" StyleDecorator.TextColor="Danger">
+                            </bs:GlyphIcon>
+                        </div>
+                        <b>{{value: Username}} </b> <span style="word-break:break-all">{{value: comment}}</span>
+
                         <hr />
                     </div>
                 </dot:Repeater>
@@ -176,14 +185,17 @@
                 </div>
             </div>
             <div style="width:100%"></div>
-                <div class="form-group" >
-                    <div class="input-group">
-                        <dot:TextBox class="form-control" Text="{value: CommentText}"></dot:TextBox>
-                        <span class="input-group-btn">
-                            <bs:Button Click="{{command: CreateComment(pid)}}" ButtonTagName="button" StyleDecorator.BackgroundColor="Primary"><bs:GlyphIcon Icon="Comment" ></bs:GlyphIcon></bs:Button>
-                        </span>
-                    </div>
+            <div class="form-group">
+                <div class="input-group">
+                    <dot:TextBox class="form-control" Text="{value: CommentText}"></dot:TextBox>
+                    <span class="input-group-btn">
+                        <bs:Button Click="{{command: CreateComment(pid)}}" ButtonTagName="button" StyleDecorator.BackgroundColor="Primary">
+                            <bs:GlyphIcon Icon="Comment">
+                            </bs:GlyphIcon>
+                        </bs:Button>
+                    </span>
                 </div>
+            </div>
             {{value: CommentError}}
         </ContentTemplate>
     </bs:ModalDialog>
