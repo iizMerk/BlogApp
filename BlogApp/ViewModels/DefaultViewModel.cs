@@ -48,7 +48,7 @@ namespace BlogApp.ViewModels
 
 
         //Method for the comments
-        public void DeleteComment(int pid, int CommentID)
+        public void DeleteComment(int postid ,int CommentID)
         {
             using (var db = new DatabaseBlog())
             {
@@ -56,7 +56,7 @@ namespace BlogApp.ViewModels
                 if (comment.UserID == UserService.GetCurrentUserId())
                 {
                     db.Comments.Remove(comment);
-                    CommentService.LoadComments(pid, Comments);
+                    CommentService.LoadComments(postid, Comments);
                 }
                 else
                 {
