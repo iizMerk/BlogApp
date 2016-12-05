@@ -160,7 +160,7 @@ namespace BlogApp.ViewModels
             else
             {
                 LoadMoreMessage = "";
-                LoadMoreVisible = true;
+                ImportantPostVisible = true;
             }
 
         }
