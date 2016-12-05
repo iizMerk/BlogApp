@@ -17,6 +17,7 @@
     <title>Home</title>
 </head>
 <body style="background-color:#f0e3c9">
+    <%--site sidebar --%>
     <div ID="sidebar" class="wow slideInLeft">
         <table style="margin-left:0px; width:250px; text-align:center">
             <tr>
@@ -62,8 +63,10 @@
             </tr>
         </table>
     </div>
-
+    <%-- end of the sidebar --%>
+    <%-- page of the site --%>
     <div class="wrapper">
+        <%--post counter --%>
         <div style="float:right; border-bottom:solid;border-left:solid; border-bottom-left-radius:5px"><div style="padding:5px">Total Posts: {{value: PostCount}}</div></div>
         <div class="jumbotron" ID="divjumbo">
             <h1 class="wow fadeInDown">
@@ -72,6 +75,7 @@
             </h1>
         </div>
         <div class="container">
+            <%-- important posts --%>
             <div style="background-color:rgba(128,128,128,0.2); padding:20px; border-radius:10px">
                 <h1>Important posts:</h1>
                 <dot:Repeater DataSource="{value: ImportantPosts}">
@@ -89,10 +93,12 @@
                     </div>
                 </dot:Repeater>
                 <div style="text-align:center">
-                    <bs:Button style="" Click="{command: LoadMoreImportantPost()}" Visible="{value:ImportantPostVisible}">Load more </bs:Button>
+                    <bs:Button  Click="{command: LoadMoreImportantPost()}" Visible="{value:ImportantPostVisible}">Load more </bs:Button>
                     {{value: ImportantPostMessage}}
                 </div>
             </div>
+            <%-- end important posts --%>
+            <%-- user posts --%>
             <div>
                 <h1>Latest posts:</h1>
                 <dot:Repeater DataSource="{{value: Posts}}">
@@ -107,9 +113,14 @@
                                 {{value: Text}}
                             </h3>
                         </div>
+                        <hr />
+                        <div style="text-align:right">
+                            <bs:Button style="padding:5px; margin:7px">Comments</bs:Button>
+                        </div>
                     </div>
                 </dot:Repeater>
             </div>
+            <%-- end user posts --%>
         </div>
         <div style="width:100%; height:50px" />
         <div style="text-align:center; height:300px">
@@ -118,6 +129,7 @@
         </div>
         <div style="width:100%; height:100px" />
     </div>
+    <%-- end of the page --%>
 
     <!--modal dialog!!-->
     <bs:ModalDialog IsDisplayed="{value:IsVisible}">
@@ -164,5 +176,6 @@
             </div>
         </ContentTemplate>
     </bs:ModalDialog>
+    <%-- end modal dialog for comments --%>
 </body>
 </html>
