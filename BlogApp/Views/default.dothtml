@@ -65,54 +65,58 @@
 
     <div class="wrapper">
         <div style="float:right; border-bottom:solid;border-left:solid; border-bottom-left-radius:5px"><div style="padding:5px">Total Posts: {{value: PostCount}}</div></div>
-        <div class="jumbotron" ID="divjumbo"  >
+        <div class="jumbotron" ID="divjumbo">
             <h1 class="wow fadeInDown">
                 {{value: BlogAppTitle}}
                 <bs:GlyphIcon Icon="Globe" />
             </h1>
         </div>
         <div class="container">
-            <h1>Important posts:</h1>
-            <dot:Repeater DataSource="{value: ImportantPosts}">
-                <div class="wow slideInUp" style="margin-left:5px;margin-right:5px;margin-top:10px; background-color:antiquewhite; border-radius:7px; width:100%">
-                    <div style="margin-left:15px;padding-top:15px">
-                        <h2 style="font-weight:500; word-break:break-word; display:inline">{{value: Title}}</h2> <h6 style="display:inline; vertical-align:text-bottom">by</h6>
-                        <h5 style="font-weight:400; display:inline; vertical-align:text-bottom"> {{value: CreatorName}} </h5>
+            <div style="background-color:rgba(128,128,128,0.2); padding:20px; border-radius:10px">
+                <h1>Important posts:</h1>
+                <dot:Repeater DataSource="{value: ImportantPosts}">
+                    <div class="wow slideInUp" style="margin-left:5px;margin-right:5px;margin-top:10px; background-color:antiquewhite; border-radius:7px; width:100%">
+                        <div style="margin-left:15px;padding-top:15px">
+                            <h2 style="font-weight:500; word-break:break-word; display:inline">{{value: Title}}</h2> <h6 style="display:inline; vertical-align:text-bottom">by</h6>
+                            <h5 style="font-weight:400; display:inline; vertical-align:text-bottom"> {{value: CreatorName}} </h5>
+                        </div>
+                        <hr />
+                        <div style="margin:15px; padding-bottom:15px">
+                            <h3 style="word-break:break-word">
+                                {{value: Text}}
+                            </h3>
+                        </div>
                     </div>
-                    <hr />
-                    <div style="margin:15px; padding-bottom:15px">
-                        <h3 style="word-break:break-word">
-                            {{value: Text}}
-                        </h3>
-                    </div>
+                </dot:Repeater>
+                <div style="text-align:center">
+                    <bs:Button style="" Click="{command: LoadMoreImportantPost()}" Visible="{value:ImportantPostVisible}">Load more </bs:Button>
+                    {{value: ImportantPostMessage}}
                 </div>
-            </dot:Repeater>
-            <div style="text-align:center; height:30px">
-                <bs:Button style="" Click="{command: LoadMoreImportantPost()}" Visible="{value:ImportantPostVisible}">LoadMore</bs:Button>
-                {{value: ImportantPostMessage}}
             </div>
-            <h1>Latest posts:</h1>
-            <dot:Repeater DataSource="{{value: Posts}}">
-                <div class="wow slideInUp" style="margin-left:5px;margin-right:5px;margin-top:10px; background-color:antiquewhite; border-radius:7px; width:100%">
-                    <div style="margin-left:15px;padding-top:15px">
-                        <h2 style="font-weight:500; word-break:break-word; display:inline">{{value: Title}}</h2> <h6 style="display:inline; vertical-align:text-bottom">by</h6>
-                        <h5 style="font-weight:400; display:inline; vertical-align:text-bottom"> -{{value: CreatorName}}- </h5>
+            <div>
+                <h1>Latest posts:</h1>
+                <dot:Repeater DataSource="{{value: Posts}}">
+                    <div class="wow slideInUp" style="margin-left:5px;margin-right:5px;margin-top:10px; background-color:antiquewhite; border-radius:7px; width:100%">
+                        <div style="margin-left:15px;padding-top:15px">
+                            <h2 style="font-weight:500; word-break:break-word; display:inline">{{value: Title}}</h2> <h6 style="display:inline; vertical-align:text-bottom">by</h6>
+                            <h5 style="font-weight:400; display:inline; vertical-align:text-bottom"> -{{value: CreatorName}}- </h5>
+                        </div>
+                        <hr />
+                        <div style="margin:15px; padding-bottom:15px">
+                            <h3 style="word-break:break-word">
+                                {{value: Text}}
+                            </h3>
+                        </div>
                     </div>
-                    <hr />
-                    <div style="margin:15px; padding-bottom:15px">
-                        <h3 style="word-break:break-word">
-                            {{value: Text}}
-                        </h3>
-                    </div>
-                </div>
-            </dot:Repeater>
+                </dot:Repeater>
+            </div>
         </div>
-        <div style="width:100%; height:50px"/>
+        <div style="width:100%; height:50px" />
         <div style="text-align:center; height:300px">
             <bs:Button style="" Click="{command: LoadMore()}" Visible="{value:LoadMoreVisible}">LoadMore</bs:Button>
             {{value: LoadMoreMessage}}
         </div>
-        <div style="width:100%; height:100px"/>
+        <div style="width:100%; height:100px" />
     </div>
 
     <!--modal dialog!!-->
@@ -123,7 +127,7 @@
         <ContentTemplate>
             <table style="width: 90%; margin:0 auto">
                 <tr>
-                    <td><dot:TextBox class="form-control logincell"  Text="{value: Username }" placeholder="Username" /></td>
+                    <td><dot:TextBox class="form-control logincell" Text="{value: Username }" placeholder="Username" /></td>
                 </tr>
                 <tr>
                     <td><dot:TextBox class="form-control logincell" Type="Password" Text="{value: Password}" placeholder="Password" /></td>
@@ -137,9 +141,26 @@
             </table>
         </ContentTemplate>
         <FooterTemplate>
-             Not a member yet?  <bs:Button Text="SignUp" StyleDecorator.BackgroundColor="Primary" Click="{command: SignUp()}"></bs:Button>
+            Not a member yet?  <bs:Button Text="SignUp" StyleDecorator.BackgroundColor="Primary" Click="{command: SignUp()}"></bs:Button>
         </FooterTemplate>
     </bs:ModalDialog>
     <%--end modal dialog--%>
+    <!--modal dialog for comments!!-->
+    <bs:ModalDialog >
+        <HeaderTemplate>
+            <h4 style="text-align:center; font-weight:300">Comments</h4>
+        </HeaderTemplate>
+        <ContentTemplate>
+            <div style="width:100%">
+                <b>Nomeutente </b>lalalala
+                <hr />
+                <b>Altroutente </b>lolololo
+            </div>
+            <div style="width:100%;height:20px"></div>
+            <div>
+                <dot:TextBox class="text-left" placeholder="Write your comment" Text="ciao"></dot:TextBox><dot:Button class="form-group">Comment</dot:Button>
+            </div>
+        </ContentTemplate>
+    </bs:ModalDialog>
 </body>
 </html>
