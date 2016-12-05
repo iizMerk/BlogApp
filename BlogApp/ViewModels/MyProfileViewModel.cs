@@ -57,7 +57,17 @@ namespace BlogApp.ViewModels
             return base.Load();
         }
 
+        public void Delete(int id)
+        {
+            using (var db = new DatabaseBlog())
+            {
+                var post = db.Posts.Find(id);
+                db.Posts.Remove(post);
+                db.SaveChanges();
+                PostService.LoadMyPost(Posts);
 
+            }
+        }
     }
 }
 
