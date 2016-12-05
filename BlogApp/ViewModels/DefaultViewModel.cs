@@ -35,11 +35,10 @@ namespace BlogApp.ViewModels
 
         public bool CommentVisible { get; set; } = false;
         public int pid { get; set; }
-
-        public int? uid { get; set; } = UserService.GetCurrentUserId();
         public string CommentText { get; set; }
-        public string   CommentError { get; set; }
+        public string CommentError { get; set; }
         public string CommentErrorColor { get; set; }
+        public bool DeleteCommentVisible { get; set; } = false;
 
         //Variables For The Site 
         public string BlogAppTitle { get; set; } = "Welcome to BlogApp";
@@ -49,11 +48,28 @@ namespace BlogApp.ViewModels
 
 
         //Method for the comments
+        public void DeleteComment(int pid, int CommentID)
+        {
+            using (var db = new DatabaseBlog())
+            {
+                var comment = db.Comments.Find(CommentID);
+                if (comment.UserID == UserService.GetCurrentUserId())
+                {
+                    db.Comments.Remove(comment);
+                    CommentService.LoadComments(pid, Comments);
+                }
+                else
+                {
+                    CommentErrorColor = "red";
+                    CommentError = "You can't delete this comment.";
+                }  
+            }
+        }
 
         public void ShowComment(int postid)
         {
             pid = postid;
-            CommentService.LoadComments(postid,Comments);
+            CommentService.LoadComments(postid, Comments);
             CommentVisible = true;
         }
         public void CreateComment(int postid)
@@ -62,12 +78,13 @@ namespace BlogApp.ViewModels
             {
                 var user = db.Users.Find(Convert.ToInt32(UserService.GetCurrentUserId()));
                 var post = db.Posts.Find(postid);
+                post.CommentCount = CommentService.CommentCount(postid);
                 var comm = new Comment();
                 comm.comment = CommentText ?? "no";
                 comm.UserID = user.UserID;
                 comm.Username = user.Username;
                 comm.Date = DateTime.Now;
-                if (comm.comment == "no" )
+                if (comm.comment == "no")
                 {
                     CommentErrorColor = "red";
                     CommentError = "You can't publish an empty comment.";
@@ -80,6 +97,7 @@ namespace BlogApp.ViewModels
                     CommentErrorColor = "green";
                     CommentError = "Your comment as been published successfully.";
                     CommentService.LoadComments(postid, Comments);
+                    PostService.LoadPost(Posts);
                 }
 
             }
