@@ -12,7 +12,10 @@ namespace BlogApp.ViewModels
         public int CommentID { get; set; }
 
         public string comment { get; set; }
+        public string Username { get; set; }
 
+        public DateTime Date { get; set; }
+        public int UserID { get; set; }
         public int PostID { get; set; }
     }
 }
