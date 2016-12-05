@@ -100,7 +100,7 @@ namespace BlogApp.ViewModels
         {
             SortExpression = nameof(Post.Date),
             SortDescending = true,
-            PageSize = Convert.ToInt32(nameof(PageSize))
+            
             
         };
 
