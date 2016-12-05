@@ -33,11 +33,57 @@ namespace BlogApp.ViewModels
 
         //Variables For The Comments
 
+        public bool CommentVisible { get; set; } = false;
+        public int pid { get; set; }
+
+        public int? uid { get; set; } = UserService.GetCurrentUserId();
+        public string CommentText { get; set; }
+        public string   CommentError { get; set; }
+        public string CommentErrorColor { get; set; }
+
         //Variables For The Site 
         public string BlogAppTitle { get; set; } = "Welcome to BlogApp";
 
         public string ErrorMessage { get; set; }
 
+
+
+        //Method for the comments
+
+        public void ShowComment(int postid)
+        {
+            pid = postid;
+            CommentService.LoadComments(postid,Comments);
+            CommentVisible = true;
+        }
+        public void CreatePost(int postid)
+        {
+            using (var db = new DatabaseBlog())
+            {
+                var user = db.Users.Find(Convert.ToInt32(UserService.GetCurrentUserId()));
+                var post = db.Posts.Find(postid);
+                var comm = new Comment();
+                comm.comment = CommentText;
+                comm.UserID = user.UserID;
+                comm.Username = user.Username;
+                comm.Date = DateTime.Now;
+                if (CommentText.Length <= 0)
+                {
+                    CommentErrorColor = "red";
+                    CommentError = "You can't publish an empty comment.";
+                }
+                else
+                {
+                    post.Comment.Add(comm);
+                    db.SaveChanges();
+                    CommentText = "";
+                    CommentErrorColor = "green";
+                    CommentError = "Your comment as been published successfully.";
+                }
+
+            }
+        }
+        //Method For Posts and Login/SignOut
         public void NewPost()
         {
             using (var db = new DatabaseBlog())
@@ -62,6 +108,7 @@ namespace BlogApp.ViewModels
                 }
             }
         }
+
 
         public void LoadMore()
         {
@@ -126,6 +173,12 @@ namespace BlogApp.ViewModels
             PageSize = 1
         };
 
+        public GridViewDataSet<Comment> Comments { get; set; } = new GridViewDataSet<Comment>()
+        {
+            SortExpression = nameof(Comment.Date),
+            SortDescending = true
+        };
+
         public string GetCreatorName(int userid)
         {
             using (var db = new DatabaseBlog())
@@ -168,8 +221,8 @@ namespace BlogApp.ViewModels
         {
             PostService.LoadImportantPost(ImportantPosts);
             PostService.LoadPost(Posts);
-            CheckLoadMore();
             CheckImportantPost();
+            CheckLoadMore();
             PostCount = Posts.TotalItemsCount;
             ImportantPosts.PageSize = 1;
             Posts.PageSize = 4;
