@@ -163,17 +163,26 @@
             <h4 style="text-align:center; font-weight:300">Comments</h4>
         </HeaderTemplate>
         <ContentTemplate>
-            <dot:Repeater DataSource="{value: Comments}">
-                <div style="width:100%">
-                    <b>{{value: Username}} </b>{{value: comment}}
-                    <hr />
+            <div style="overflow:auto; min-height:500px; max-height:500px; margin-left:0px;margin-right:0px">
+                <dot:Repeater DataSource="{value: Comments}">
+                    <div style="width:100%" >
+                       <b >{{value: Username}} </b> <span style="word-break:break-all">{{value: comment}}</span>
+                        <hr />
+                    </div>
+                </dot:Repeater>
+                <div style="text-align:center">
+                    <span style="padding-bottom:20px; color:slategrey">No more comments to show.</span>
                 </div>
-            </dot:Repeater>
-            <div style="width:100%;height:20px"></div>
-            <div>
-                <dot:TextBox class="text-left" placeholder="Write your comment" Text="{value: CommentText}"></dot:TextBox>
-                <dot:Button class="form-group" Click="{{command: CreateComment(pid)}}">Comment</dot:Button>
             </div>
+            <div style="width:100%"></div>
+                <div class="form-group" >
+                    <div class="input-group">
+                        <dot:TextBox class="form-control" Text="{value: CommentText}"></dot:TextBox>
+                        <span class="input-group-btn">
+                            <bs:Button Click="{{command: CreateComment(pid)}}" ButtonTagName="button" StyleDecorator.BackgroundColor="Primary"><bs:GlyphIcon Icon="Comment" ></bs:GlyphIcon></bs:Button>
+                        </span>
+                    </div>
+                </div>
             {{value: CommentError}}
         </ContentTemplate>
     </bs:ModalDialog>
