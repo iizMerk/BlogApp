@@ -20,7 +20,8 @@ namespace BlogApp.ViewModels
         public string Email { get; set; }
         public bool IsVisible { get; set; } = false;
 
-        public int PageSize { get; set; }
+        public bool LoadMoreVisible { get; set; }
+        public string  LoadMoreMessage { get; set; }
        
 
         //Variable For the Post
@@ -59,7 +60,9 @@ namespace BlogApp.ViewModels
 
         public void LoadMore()
         {
-            PageSize = PageSize + 4;
+            Posts.PageSize = Posts.PageSize+4;
+            PostService.LoadPost(Posts);
+            CheckLoadMore();
         }
         public void SignOut()
         {
@@ -100,7 +103,7 @@ namespace BlogApp.ViewModels
         {
             SortExpression = nameof(Post.Date),
             SortDescending = true,
-            
+            PageSize = 4
             
         };
 
@@ -113,11 +116,24 @@ namespace BlogApp.ViewModels
             }
         }
         
-
+        public void CheckLoadMore()
+        {
+            if (Posts.TotalItemsCount <= Posts.PageSize)
+            {
+                LoadMoreVisible = false;
+                LoadMoreMessage = "No other post to load.";
+            }
+            else
+            {
+                LoadMoreMessage = "";
+                LoadMoreVisible = true;
+            }
+        }
         public override Task Load()
         {
            PostService.LoadPost(Posts);
-            PageSize = 4;
+            CheckLoadMore();
+            Posts.PageSize = 4;
             return base.Load();
         }      
     }

@@ -12,6 +12,7 @@ namespace BlogApp.ViewModels
 	public class CreatePostViewModel : DotvvmViewModelBase
 	{
         [Required(ErrorMessage ="The Title is Required.")]
+        [MaxLength(40,ErrorMessage ="Your title can't contain over 40 charcters.")] 
         public string Title { get; set; }
         [Required(ErrorMessage ="The text is required.")]
         [MinLength(100,ErrorMessage = "Your Post need to have at least 100 characters.")]
