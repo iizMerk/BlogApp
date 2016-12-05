@@ -63,11 +63,11 @@ namespace BlogApp.ViewModels
                 var user = db.Users.Find(Convert.ToInt32(UserService.GetCurrentUserId()));
                 var post = db.Posts.Find(postid);
                 var comm = new Comment();
-                comm.comment = CommentText;
+                comm.comment = CommentText ?? "no";
                 comm.UserID = user.UserID;
                 comm.Username = user.Username;
                 comm.Date = DateTime.Now;
-                if (CommentText.Length <= 0)
+                if (comm.comment == "no" )
                 {
                     CommentErrorColor = "red";
                     CommentError = "You can't publish an empty comment.";
@@ -76,7 +76,7 @@ namespace BlogApp.ViewModels
                 {
                     post.Comment.Add(comm);
                     db.SaveChanges();
-                    CommentText = "";
+                    CommentText = null;
                     CommentErrorColor = "green";
                     CommentError = "Your comment as been published successfully.";
                     CommentService.LoadComments(postid, Comments);
