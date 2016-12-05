@@ -36,6 +36,7 @@
             </Columns>
         </bs:GridView>
     </div>
+    <bs:DataPager DataSet="{value: Posts}" />
     <%--Modal View For Read Your Posts --%>
     <bs:ModalDialog IsDisplayed="{value: IsDisplayed}" Size="Large">
         <HeaderTemplate>
