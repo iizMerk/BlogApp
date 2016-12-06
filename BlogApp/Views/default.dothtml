@@ -76,8 +76,8 @@
         </div>
         <div class="container">
             <%-- important posts --%>
-            <div class="wow slideInUp" style="background-color:rgba(192,169,136,0.5); padding:20px; border-radius:10px">
-                <h1><b>Important posts </b><span><bs:GlyphIcon Icon="Bullhorn"/></span></h1>
+            <div class="wow slideInUp">
+                <h1>Important posts:</h1>
                 <dot:Repeater DataSource="{value: ImportantPosts}">
                     <div style="margin-left:5px;margin-right:5px;margin-top:10px; background-color:antiquewhite; border-radius:7px; width:100%">
                         <div style="margin-left:15px;padding-top:15px">
@@ -98,9 +98,11 @@
                 </div>
             </div>
             <%-- end important posts --%>
+            <div style="width:100%;height:50px" />
+            <div class="wow slideInUp" style="width:100%;height:1px;background-color:black" />
             <%-- user posts --%>
             <div class="wow slideInUp">
-                <h1><b>Latest posts </b><span><bs:GlyphIcon Icon="Book"/></span></h1>
+                <h1>Latest posts:</h1>
                 <dot:Repeater DataSource="{{value: Posts}}">
                     <div style="margin-left:5px;margin-right:5px;margin-top:10px; background-color:antiquewhite; border-radius:7px; width:100%">
                         <div style="margin-left:15px;padding-top:15px">
@@ -113,16 +115,20 @@
                                 {{value: Text}}
                             </h3>
                         </div>
-                        <hr />
-                    </div>
-
-                    <div class="input-group" style="text-align:right">
-                        <span class="input-group-addon">{{value: CommentCount}}<bs:GlyphIcon Icon="Comment" /></span>
-                        <div >
-                            <bs:Button style="padding:5px; margin:7px" Click="{command: _root.ShowComment(PostID)}" ButtonTagName="button">Comments </bs:Button>
+                        <div style="height:50px">
+                            <div class="input-group" style="width:70px; float:right; margin-right:20px;margin-bottom:30px">
+                                <span class="input-group-addon">
+                                    {{value: CommentCount + "  "}}
+                                    <bs:GlyphIcon Icon="Comment" />
+                                </span>
+                                <span class="input-group-btn">
+                                    <bs:button Click="{command: _root.ShowComment(PostID)}" ButtonTagName="button">Comments</bs:button>
+                                </span>
+                            </div>
                         </div>
-
                     </div>
+
+
                 </dot:Repeater>
             </div>
             <%-- end user posts --%>
@@ -172,13 +178,8 @@
                 <dot:Repeater DataSource="{value: Comments}">
                     <div style="width:100%">
                         <div style="float:right">
-                            <bs:Button Click="{command: _root.DeleteComment(PostID,CommentID)}" Visible="{value: Delete}" ButtonTagName="button">
-                                <PostBack.Handlers>
-                                    <bs:ModalConfirmPostBackHandler Message="You want to delete this comment?" />
-                                </PostBack.Handlers>
-                                <bs:GlyphIcon Icon="Remove" StyleDecorator.TextColor="Danger">
-                                </bs:GlyphIcon>
-                            </bs:Button>
+                            <bs:GlyphIcon Icon="Remove" StyleDecorator.TextColor="Danger">
+                            </bs:GlyphIcon>
                         </div>
                         <b>{{value: Username}} </b> <span style="word-break:break-all">{{value: comment}}</span>
 
