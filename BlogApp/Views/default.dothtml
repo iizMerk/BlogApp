@@ -99,7 +99,7 @@
             </div>
             <%-- end important posts --%>
             <div style="width:100%;height:50px" />
-            <div class="wow slideInUp" style="width:100%;height:1px;background-color:black" />
+            <div class="wow  fadeInUp" style="width:110%;height:1px;background-color:black"></div>
             <%-- user posts --%>
             <div class="wow slideInUp">
                 <h1>Latest posts:</h1>
@@ -130,7 +130,6 @@
                         </div>
                     </div>
 
-
                 </dot:Repeater>
             </div>
             <%-- end user posts --%>
@@ -141,7 +140,6 @@
             {{value: LoadMoreMessage}}
         </div>
         <div style="width:100%; height:100px" />
-    </div>
     <%-- end of the page --%>
 
     <!--modal dialog!!-->
@@ -176,21 +174,22 @@
             <h4 style="text-align:center; font-weight:300">Comments</h4>
         </HeaderTemplate>
         <ContentTemplate>
-            <div style="overflow:auto; min-height:500px; max-height:500px; margin-left:0px;margin-right:0px">
+            <div style="overflow:auto; min-height:500px; max-height:500px; margin-left:-5px;margin-right:-20px">
                 <dot:Repeater DataSource="{value: Comments}">
-                    <div style="width:100%">
-                        <div style="float:right">
-                            <bs:Button Click="{command: _root.DeleteComment(PostID,CommentID)}" Visible="{value: Delete}" ButtonTagName="button">
-                                <PostBack.Handlers>
-                                    <bs:ModalConfirmPostBackHandler Message="You want to delete this comment?" />
-                                </PostBack.Handlers>
-                                <bs:GlyphIcon Icon="Remove" StyleDecorator.TextColor="Danger">
-                                </bs:GlyphIcon>
-                            </bs:Button>
+                    <div style="padding-right:5px">
+                        <div style="width:100%">
+                            <div style="float:right">
+                                <bs:Button Click="{command: _root.DeleteComment(PostID,CommentID)}" Visible="{value: Delete}" ButtonTagName="button" style="margin-top:-9px">
+                                    <PostBack.Handlers>
+                                        <bs:ModalConfirmPostBackHandler Message="You want to delete this comment?" />
+                                    </PostBack.Handlers>
+                                    <bs:GlyphIcon Icon="Remove" StyleDecorator.TextColor="Danger">
+                                    </bs:GlyphIcon>
+                                </bs:Button>
+                            </div>
+                            <b>{{value: Username}} </b> <span style="word-break:break-all">{{value: comment}}</span>
+                            <hr style="width:100%" />
                         </div>
-                        <b>{{value: Username}} </b> <span style="word-break:break-all">{{value: comment}}</span>
-
-                        <hr />
                     </div>
                 </dot:Repeater>
                 <div style="text-align:center">
@@ -213,7 +212,7 @@
                     </div>
                     {{value: CommentError}}
                 </AuthenticatedTemplate>
-            </dot:AuthenticatedView>  
+            </dot:AuthenticatedView>
         </ContentTemplate>
     </bs:ModalDialog>
     <%-- end modal dialog for comments --%>
