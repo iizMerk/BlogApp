@@ -48,21 +48,15 @@ namespace BlogApp.ViewModels
 
 
         //Method for the comments
-        public void DeleteComment(int pid, int CommentID)
+        public void DeleteComment(int postid, int CommentID)
         {
             using (var db = new DatabaseBlog())
             {
                 var comment = db.Comments.Find(CommentID);
-                if (comment.UserID == UserService.GetCurrentUserId())
-                {
-                    db.Comments.Remove(comment);
-                    CommentService.LoadComments(pid, Comments);
-                }
-                else
-                {
-                    CommentErrorColor = "red";
-                    CommentError = "You can't delete this comment.";
-                }  
+                db.Comments.Remove(comment);
+                db.SaveChanges();
+                CommentService.LoadComments(postid, Comments);
+
             }
         }
 

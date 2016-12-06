@@ -16,6 +16,17 @@ namespace BlogApp.ViewModels
                 var query = from p in db.Comments
                             where p.PostID == postid
                             select p;
+                foreach (var item in query)
+                {
+                    if (item.UserID == UserService.GetCurrentUserId())
+                    {
+                        item.Delete = true;
+                    }
+                    else
+                    {
+                        item.Delete = false;
+                    }
+                }
                 dataset.LoadFromQueryable(query);
             }
         }

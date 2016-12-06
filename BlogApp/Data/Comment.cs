@@ -14,6 +14,7 @@ namespace BlogApp.ViewModels
         public string comment { get; set; }
         public string Username { get; set; }
 
+        public bool Delete { get; set; } = false;
         public DateTime Date { get; set; }
         public int UserID { get; set; }
         public int PostID { get; set; }
