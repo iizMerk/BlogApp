@@ -9,36 +9,41 @@
     <meta charset="utf-8" />
     <title>SignUp</title>
 </head>
-<body style="background-color:#f0e3c9">
+<body class="container" style="background-color:#f0e3c9">
+    <h1>
+        <a class="blogapp wow fadeInLeft" href="/">
+            MyBlogApp
+            <bs:GlyphIcon Icon="Globe" />
+        </a>
+        Register page
+    </h1>
 
-    <div class="container">
-        <div class="jumbotron">
-            <h2></h2>
-            <Table style="text-align:center">
-                <tr>
-                    <td> <dot:TextBox placeholder="Username" Text="{value: Username}"/></td>
-                </tr>
-                <tr>
-                    <td><dot:TextBox Type="Password" placeholder="Password" Text="{value: Password}"/></td>
-                </tr>
-                <tr>
-                    <td><dot:TextBox Type="Password" placeholder="Confirm Password" Text="{value: ConfirmPassword}" /></td>
-                </tr>
-                <tr>
-                    <td><dot:TextBox Type="Email" placeholder="Email" Text="{value: Email}" /></td>
-                </tr>
-                <tr>
-                    <td><dot:TextBox placeholder="Country" Text="{value: Country}" /></td>
-                </tr>
-                <tr>
-                    <td><bs:Button Text="Sign Up" Click="{{command: SignUp()}}" Type="Primary"/></td>
-                </tr>
-                <tr>
-                    <td>{{value: ErrorMessage}}</td>
-                    <td> <dot:ValidationSummary /> </td>
-                </tr>
-            </Table>
-        </div>
+    <div class="jumbotron" style="margin-top:5%; border-radius:10px">
+
+        <Table style="text-align:center; margin:0 auto; width:50%">
+            <tr>
+                <td style="padding:5px"> <dot:TextBox class="form-control" placeholder="Username" Text="{value: Username}" /></td>
+            </tr>
+            <tr>
+                <td style="padding:5px"><dot:TextBox class="form-control" Type="Password" placeholder="Password" Text="{value: Password}" /></td>
+            </tr>
+            <tr>
+                <td style="padding:5px"><dot:TextBox class="form-control" Type="Password" placeholder="Confirm Password" Text="{value: ConfirmPassword}" /></td>
+            </tr>
+            <tr>
+                <td style="padding:5px"><dot:TextBox class="form-control" Type="Email" placeholder="Email" Text="{value: Email}" /></td>
+            </tr>
+            <tr>
+                <td style="padding:5px"><dot:TextBox class="form-control" placeholder="Country" Text="{value: Country}" /></td>
+            </tr>
+            <tr>
+                <td style="padding:5px; padding-top: 10px"><bs:Button Text="Sign Up" Click="{{command: SignUp()}}" Type="Primary" /></td>
+            </tr>
+            <tr>
+                <td>{{value: ErrorMessage}}</td>
+                <td> <dot:ValidationSummary /> </td>
+            </tr>
+        </Table>
     </div>
 </body>
 </html>
