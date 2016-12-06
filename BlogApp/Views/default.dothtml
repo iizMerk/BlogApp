@@ -196,18 +196,22 @@
                 </div>
             </div>
             <div style="width:100%"></div>
-            <div class="form-group">
-                <div class="input-group">
-                    <dot:TextBox class="form-control" Text="{value: CommentText}"></dot:TextBox>
-                    <span class="input-group-btn">
-                        <bs:Button Click="{{command: CreateComment(pid)}}" ButtonTagName="button" StyleDecorator.BackgroundColor="Primary">
-                            <bs:GlyphIcon Icon="Comment">
-                            </bs:GlyphIcon>
-                        </bs:Button>
-                    </span>
-                </div>
-            </div>
-            {{value: CommentError}}
+            <dot:AuthenticatedView>
+                <AuthenticatedTemplate>
+                    <div class="form-group">
+                        <div class="input-group">
+                            <dot:TextBox class="form-control" Text="{value: CommentText}"></dot:TextBox>
+                            <span class="input-group-btn">
+                                <bs:Button Click="{{command: CreateComment(pid)}}" ButtonTagName="button" StyleDecorator.BackgroundColor="Primary">
+                                    <bs:GlyphIcon Icon="Comment">
+                                    </bs:GlyphIcon>
+                                </bs:Button>
+                            </span>
+                        </div>
+                    </div>
+                    {{value: CommentError}}
+                </AuthenticatedTemplate>
+            </dot:AuthenticatedView>  
         </ContentTemplate>
     </bs:ModalDialog>
     <%-- end modal dialog for comments --%>
