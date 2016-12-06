@@ -28,7 +28,7 @@ namespace BlogApp
             config.RouteTable.Add("CreatePost", "createpost", "Views/CreatePost.dothtml");
             config.RouteTable.Add("MyProfile", "myprofile", "Views/MyProfile.dothtml");
             config.RouteTable.Add("AdminPage", "admin", "Views/AdminPage.dothtml");
-
+            config.RouteTable.Add("Profile", "profile/{Id}", "Views/profile.dothtml");
             // Uncomment the following line to auto-register all dothtml files in the Views folder
             // config.RouteTable.AutoDiscoverRoutes(new DefaultRouteStrategy(config));    
         }

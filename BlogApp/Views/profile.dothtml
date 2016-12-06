@@ -1,0 +1,25 @@
+﻿@viewModel BlogApp.ViewModels.ProfileViewModel, BlogApp
+
+<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+</head>
+<body>
+    <div>
+        {{value: CreatorName}}
+        <bs:GridView DataSource="{value: Posts}">
+            <Columns>
+                <dot:GridViewTextColumn HeaderText="Ciao" ValueBinding="{value: Date}"/>
+                <dot:GridViewTextColumn HeaderText="Ciao" ValueBinding="{value: Title}" />
+                <dot:GridViewTextColumn HeaderText="Ciao" ValueBinding="{value: CommentCount}" />
+                
+            </Columns>
+        </bs:GridView>
+    </div>
+</body>
+</html>
+
+

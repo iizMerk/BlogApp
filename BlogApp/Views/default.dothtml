@@ -107,7 +107,9 @@
                     <div style="margin-left:5px;margin-right:5px;margin-top:10px; background-color:antiquewhite; border-radius:7px; width:100%">
                         <div style="margin-left:15px;padding-top:15px">
                             <h2 style="font-weight:500; word-break:break-word; display:inline">{{value: Title}}</h2> <h6 style="display:inline; vertical-align:text-bottom">by</h6>
-                            <h5 style="font-weight:400; display:inline; vertical-align:text-bottom"> -{{value: CreatorName}}- </h5>
+                            <h5 style="font-weight:400; display:inline; vertical-align:text-bottom">
+                                <dot:RouteLink RouteName="profile"  Param-id="{value: UserID}" Events.Click="{command: _root.PassTheID(UserID)}"> -{{value: CreatorName}}- </dot:RouteLink>
+                            </h5>
                         </div>
                         <hr />
                         <div style="margin:15px; padding-bottom:15px">

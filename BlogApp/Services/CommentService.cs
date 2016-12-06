@@ -38,7 +38,12 @@ namespace BlogApp.ViewModels
                 var query = from p in db.Comments
                             where p.PostID == postid
                             select p;
-                return Convert.ToInt32(query.Count());
+                int count = 0;
+                foreach (var item in query)
+                {
+                    count++;
+                }
+                return count;
             }
         }
     }

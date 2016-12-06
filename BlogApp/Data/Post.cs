@@ -20,7 +20,7 @@ namespace BlogApp.ViewModels
         public string CreatorName { get; set; }
 
         public DateTime Date { get; set; }
-        public int CommentCount { get; set; }
+        public int CommentCount { get; set; } 
 
         public PostCategory Category { get; set; }
         public virtual ICollection<Comment> Comment { get; set; } = new List<Comment>();

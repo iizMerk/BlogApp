@@ -45,7 +45,8 @@ namespace BlogApp.ViewModels
 
         public string ErrorMessage { get; set; }
 
-
+        //variables for pass the userid on the profilepage
+        public int useridprofile { get; set; }
 
         //Method for the comments
         public void DeleteComment(int postid, int CommentID)
@@ -53,13 +54,20 @@ namespace BlogApp.ViewModels
             using (var db = new DatabaseBlog())
             {
                 var comment = db.Comments.Find(CommentID);
+                var post = db.Posts.Find(postid);
                 db.Comments.Remove(comment);
                 db.SaveChanges();
+                post.CommentCount = post.CommentCount = CommentService.CommentCount(postid);
+                db.SaveChanges();
                 CommentService.LoadComments(postid, Comments);
-                CommentService.CommentCount(postid);
+                PostService.LoadPost(Posts);
             }
         }
 
+        public int PassTheID(int userid)
+        {
+            return userid;
+        }
         public void ShowComment(int postid)
         {
             pid = postid;
@@ -72,7 +80,6 @@ namespace BlogApp.ViewModels
             {
                 var user = db.Users.Find(Convert.ToInt32(UserService.GetCurrentUserId()));
                 var post = db.Posts.Find(postid);
-                post.CommentCount = CommentService.CommentCount(postid);
                 var comm = new Comment();
                 comm.comment = CommentText ?? "no";
                 comm.UserID = user.UserID;
@@ -86,6 +93,8 @@ namespace BlogApp.ViewModels
                 else
                 {
                     post.Comment.Add(comm);
+                    db.SaveChanges();
+                    post.CommentCount = CommentService.CommentCount(postid);
                     db.SaveChanges();
                     CommentText = null;
                     CommentErrorColor = "green";

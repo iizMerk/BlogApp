@@ -145,6 +145,7 @@
     <Compile Include="ViewModels\CreatePostViewModel.cs" />
     <Compile Include="ViewModels\DefaultViewModel.cs" />
     <Compile Include="ViewModels\MyProfileViewModel.cs" />
+    <Compile Include="ViewModels\ProfileViewModel.cs" />
     <Compile Include="ViewModels\SignupViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -207,6 +208,7 @@
     <Content Include="Views\CreatePost.dothtml" />
     <Content Include="Views\MyProfile.dothtml" />
     <Content Include="Views\AdminPage.dothtml" />
+    <Content Include="Views\profile.dothtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
