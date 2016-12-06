@@ -4,20 +4,35 @@
 
 <html lang="en" xmlns="http://www.w3.org/1999/xhtml">
 <head>
+    <link href="../Content/bootstrap.css" rel="stylesheet" />
+    <link href="../Scripts/StyleSheet.css" rel="stylesheet" />
     <meta charset="utf-8" />
     <title></title>
 </head>
-<body>
-    <div>
-        {{value: CreatorName}}
-        <bs:GridView DataSource="{value: Posts}">
-            <Columns>
-                <dot:GridViewTextColumn HeaderText="Ciao" ValueBinding="{value: Date}"/>
-                <dot:GridViewTextColumn HeaderText="Ciao" ValueBinding="{value: Title}" />
-                <dot:GridViewTextColumn HeaderText="Ciao" ValueBinding="{value: CommentCount}" />
-                
-            </Columns>
-        </bs:GridView>
+<body style="background-color:#f0e3c9" class="container">
+    <h1>
+        <a class="blogapp" href="/">
+            MyBlogApp
+            <bs:GlyphIcon Icon="Globe" />
+        </a>
+        <div style="width:100%;height:30px"></div>
+    </h1>
+    <h1 style="margin-left:-100px"><span style="text-decoration-color:red"> {{value: CreatorName}}</span>'s profile</h1>
+    <div class="row">
+        <div class="col-md-4" style> date</div>
+        <div class="col-md-4"> title</div>
+        <div class="col-md-4"> comments</div>
+
+        <dot:Repeater DataSource="{value: Posts}">
+            <div class="col-md-4"> {{value: Date}}</div>
+            <div class="col-md-4"> {{value: Title}}</div>
+            <div class="col-md-4"> {{value: CommentCount }}</div>
+            <div class="col-md-12" style="width: 100%; height:1px; background-color:black"></div>
+                    
+                   
+                   
+        </dot:Repeater>
+
     </div>
 </body>
 </html>
