@@ -178,8 +178,13 @@
                 <dot:Repeater DataSource="{value: Comments}">
                     <div style="width:100%">
                         <div style="float:right">
-                            <bs:GlyphIcon Icon="Remove" StyleDecorator.TextColor="Danger">
-                            </bs:GlyphIcon>
+                            <bs:Button Click="{command: _root.DeleteComment(PostID,CommentID)}" Visible="{value: Delete}" ButtonTagName="button">
+                                <PostBack.Handlers>
+                                    <bs:ModalConfirmPostBackHandler Message="You want to delete this comment?" />
+                                </PostBack.Handlers>
+                                <bs:GlyphIcon Icon="Remove" StyleDecorator.TextColor="Danger">
+                                </bs:GlyphIcon>
+                            </bs:Button>
                         </div>
                         <b>{{value: Username}} </b> <span style="word-break:break-all">{{value: comment}}</span>
 
