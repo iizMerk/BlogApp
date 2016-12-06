@@ -56,7 +56,7 @@ namespace BlogApp.ViewModels
                 db.Comments.Remove(comment);
                 db.SaveChanges();
                 CommentService.LoadComments(postid, Comments);
-
+                CommentService.CommentCount(postid);
             }
         }
 
@@ -189,7 +189,7 @@ namespace BlogApp.ViewModels
         public GridViewDataSet<Comment> Comments { get; set; } = new GridViewDataSet<Comment>()
         {
             SortExpression = nameof(Comment.Date),
-            SortDescending = true
+            SortDescending = false
         };
 
         public string GetCreatorName(int userid)
