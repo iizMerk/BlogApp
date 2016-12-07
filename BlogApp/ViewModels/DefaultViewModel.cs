@@ -98,7 +98,7 @@ namespace BlogApp.ViewModels
                     db.SaveChanges();
                     CommentText = null;
                     CommentErrorColor = "green";
-                    CommentError = "Your comment as been published successfully.";
+                    CommentError = "";
                     CommentService.LoadComments(postid, Comments);
                     PostService.LoadPost(Posts);
                 }

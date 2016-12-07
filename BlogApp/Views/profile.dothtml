@@ -26,17 +26,21 @@
             <dot:GridViewTextColumn ValueBinding="{value: CommentCount}" HeaderText="Comment Count"></dot:GridViewTextColumn>
             <dot:GridViewTemplateColumn>
                 <ContentTemplate>
-                    <dot:LinkButton Click="{command: _root.Show(PostID)}">
-                        Read
-                        <bs:GlyphIcon Icon="Book" />
-                    </dot:LinkButton>
-                </ContentTemplate>
+                    <div style="text-align:center; margin-top:10px">
+                        <dot:LinkButton Click="{command: _root.Show(PostID)}">
+                            Read
+                            <bs:GlyphIcon Icon="Book" />
+                        </dot:LinkButton>
+                    </div>
+</ContentTemplate>
             </dot:GridViewTemplateColumn>
             <dot:GridViewTemplateColumn>
                 <ContentTemplate>
-                    <bs:button Click="{command: _root.ShowComment(PostID)}" ButtonTagName="button">
-                        Comments
-                    </bs:button>
+                    <div style="text-align:center">
+                        <bs:button Click="{command: _root.ShowComment(PostID)}" ButtonTagName="button">
+                            Comments
+                        </bs:button>
+                    </div>
                 </ContentTemplate>
             </dot:GridViewTemplateColumn>
         </Columns>
