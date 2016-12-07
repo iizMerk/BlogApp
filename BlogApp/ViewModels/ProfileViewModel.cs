@@ -8,12 +8,12 @@ using DotVVM.Framework.Controls;
 
 namespace BlogApp.ViewModels
 {
-    public class ProfileViewModel : DotvvmViewModelBase
+    public class ProfileViewModel : DefaultViewModel
     {
         public int userid { get; set; }
         public string CreatorName { get; set; } 
 
-        public GridViewDataSet<Post> Posts { get; set; } = new GridViewDataSet<Post>()
+        public GridViewDataSet<Post> profilePosts { get; set; } = new GridViewDataSet<Post>()
         {
             SortExpression = nameof(Post.Date),
             SortDescending = true
@@ -32,7 +32,7 @@ namespace BlogApp.ViewModels
         {
             userid = Convert.ToInt32(Context.Parameters["Id"]);
             CreatorName = GetCreatorName();
-            PostService.LoadOtherPost(userid, Posts);
+            PostService.LoadOtherPost(userid, profilePosts);
             return base.Init();        
         }
     }
