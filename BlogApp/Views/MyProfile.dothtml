@@ -24,7 +24,7 @@
         <bs:GridView DataSource="{value: Posts}" ShowHeaderWhenNoData="true">
             <Columns>
                 <dot:GridViewTextColumn ValueBinding="{value: Title}" HeaderText="Title" />
-                <dot:GridViewTextColumn ValueBinding="{value: Date}" HeaderText="Date" />
+                <dot:GridViewTextColumn FormatString="g" ValueBinding="{value: Date}" HeaderText="Date" />
                 <dot:GridViewTemplateColumn>
                     <ContentTemplate>
                         <dot:LinkButton Click="{command: _root.Show(PostID)}">
@@ -34,6 +34,7 @@
                     </ContentTemplate>
                 </dot:GridViewTemplateColumn>
                 <dot:GridViewTemplateColumn>
+                    <HeaderTemplate>Commands</HeaderTemplate>
                     <ContentTemplate>
                         <bs:Button Type="Danger" Click="{command:_root.Delete(PostID)}" ButtonTagName="button">
                         <PostBack.Handlers>
@@ -41,6 +42,9 @@
                         </PostBack.Handlers>
                             Delete<bs:GlyphIcon Icon="Remove"/>
                             </bs:Button>
+                        <bs:button Click="{command: _root.ShowComment(PostID)}" ButtonTagName="button">
+                            Comments {{value: CommentCount}} <bs:GlyphIcon Icon="Comment"/>
+                        </bs:button>
                     </ContentTemplate>
                 </dot:GridViewTemplateColumn>
             </Columns>
@@ -62,6 +66,54 @@
             </table>
         </ContentTemplate>
     </bs:ModalDialog>
+    <!--modal dialog for comments!!-->
+    <bs:ModalDialog IsDisplayed="{{value: CommentVisible}}">
+        <HeaderTemplate>
+            <h4 style="text-align:center; font-weight:300">Comments</h4>
+        </HeaderTemplate>
+        <ContentTemplate>
+            <div style="overflow:auto; min-height:500px; max-height:500px; margin-left:-5px;margin-right:-20px">
+                <dot:Repeater DataSource="{value: Comments}">
+                    <div style="padding-right:5px">
+                        <div style="width:100%">
+                            <div style="float:right">
+                                <bs:Button Click="{command: _root.DeleteComment(PostID,CommentID)}" Visible="{value: Delete}" ButtonTagName="button" style="margin-top:-9px">
+                                    <PostBack.Handlers>
+                                        <bs:ModalConfirmPostBackHandler Message="You want to delete this comment?" />
+                                    </PostBack.Handlers>
+                                    <bs:GlyphIcon Icon="Remove" StyleDecorator.TextColor="Danger">
+                                    </bs:GlyphIcon>
+                                </bs:Button>
+                            </div>
+                            <b>{{value: Username}} </b> <span style="word-break:break-all">{{value: comment}}</span>
+                            <hr style="width:100%" />
+                        </div>
+                    </div>
+                </dot:Repeater>
+                <div style="text-align:center">
+                    <span style="padding-bottom:20px; color:slategrey">No more comments to show.</span>
+                </div>
+            </div>
+            <div style="width:100%"></div>
+            <dot:AuthenticatedView>
+                <AuthenticatedTemplate>
+                    <div class="form-group">
+                        <div class="input-group">
+                            <dot:TextBox class="form-control" Text="{value: CommentText}"></dot:TextBox>
+                            <span class="input-group-btn">
+                                <bs:Button Click="{{command: CreateComment(pid)}}" ButtonTagName="button" StyleDecorator.BackgroundColor="Primary">
+                                    <bs:GlyphIcon Icon="Comment">
+                                    </bs:GlyphIcon>
+                                </bs:Button>
+                            </span>
+                        </div>
+                    </div>
+                    {{value: CommentError}}
+                </AuthenticatedTemplate>
+            </dot:AuthenticatedView>
+        </ContentTemplate>
+    </bs:ModalDialog>
+    <%-- end modal dialog for comments --%>
 </body>
 </html>
 
