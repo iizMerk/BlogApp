@@ -86,6 +86,21 @@
         </ContentTemplate>
     </bs:ModalDialog>
     <%-- end modal dialog for comments --%>
+    <%--Modal View For Read Your Posts --%>
+    <bs:ModalDialog IsDisplayed="{value: IsDisplayed}" Size="Large">
+        <HeaderTemplate>
+            <h1><b>{{value: TitlePost}}</b></h1>
+        </HeaderTemplate>
+        <ContentTemplate>
+            <table>
+                <tr>
+                    <td style="word-break:break-word">
+                        <h4>{{value: TextPost}}</h4>
+                    </td>
+                </tr>
+            </table>
+        </ContentTemplate>
+    </bs:ModalDialog>
 </body>
 </html>
 

@@ -8,7 +8,7 @@ using DotVVM.Framework.Controls;
 
 namespace BlogApp.ViewModels
 {
-    public class ProfileViewModel : DefaultViewModel
+    public class ProfileViewModel : MyProfileViewModel
     {
         public int userid { get; set; }
         public string CreatorName { get; set; } 
