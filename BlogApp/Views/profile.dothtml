@@ -17,26 +17,30 @@
         </a>
         <div style="width:100%;height:30px"></div>
     </h1>
-    <h3 style="margin-left:-100px"><span style="text-decoration-color:red"> {{value: CreatorName}}</span>'s profile</h3>
-    
+    <h3 ><span style="color:red"> {{value: CreatorName}}</span>'s profile</h3>
+
     <bs:GridView DataSource="{value: profilePosts}" ShowHeaderWhenNoData="true">
         <Columns>
             <dot:GridViewTextColumn ValueBinding="{value: Title}" HeaderText="Title" />
-            <dot:GridViewTextColumn  FormatString="g" ValueBinding="{value: Date}" HeaderText="Date" />
+            <dot:GridViewTextColumn FormatString="g" ValueBinding="{value: Date}" HeaderText="Date" />
             <dot:GridViewTemplateColumn>
-                <ContentTemplate>
-                    <dot:LinkButton Click="{command: _root.Show(PostID)}">
-                        Read
-                        <bs:GlyphIcon Icon="Book" />
-                    </dot:LinkButton>
-                </ContentTemplate>
+                <div style="text-align:center">
+                    <ContentTemplate>
+                        <dot:LinkButton Click="{command: _root.Show(PostID)}">
+                            Read
+                            <bs:GlyphIcon Icon="Book" />
+                        </dot:LinkButton>
+                    </ContentTemplate>
+                </div>
             </dot:GridViewTemplateColumn>
             <dot:GridViewTemplateColumn>
                 <ContentTemplate>
-                    <bs:button Click="{command: _root.ShowComment(PostID)}" ButtonTagName="button">
-                        Comments {{value: CommentCount}}
-                        <bs:GlyphIcon Icon="Comment" />
-                    </bs:button>
+                    <div style="text-align:center">
+                        <bs:button Click="{command: _root.ShowComment(PostID)}" ButtonTagName="button">
+                            Comments {{value: CommentCount}}
+                            <bs:GlyphIcon Icon="Comment" />
+                        </bs:button>
+                    </div>
                 </ContentTemplate>
             </dot:GridViewTemplateColumn>
         </Columns>

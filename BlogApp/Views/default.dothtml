@@ -179,7 +179,7 @@
                     <div style="padding-right:5px">
                         <div style="width:100%">
                             <div style="float:right">
-                                <bs:Button Click="{command: _root.DeleteComment(PostID,CommentID)}" Visible="{value: Delete}" ButtonTagName="button" style="margin-top:-9px">
+                                <bs:Button Click="{command: _root.DeleteComment(PostID,CommentID)}" Visible="{value: Delete}" ButtonTagName="button">
                                     <PostBack.Handlers>
                                         <bs:ModalConfirmPostBackHandler Message="You want to delete this comment?" />
                                     </PostBack.Handlers>
