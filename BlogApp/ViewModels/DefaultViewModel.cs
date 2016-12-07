@@ -14,6 +14,7 @@ namespace BlogApp.ViewModels
     public class DefaultViewModel : DotvvmViewModelBase
     {
         //Variables For The Users.
+        public string DisplayName { get; set; } = UserService.GetUsername() ?? "Guest";
         public string Username { get; set; }
         public string Password { get; set; }
         public string ConfirmPassword { get; set; }

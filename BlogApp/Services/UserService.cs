@@ -95,5 +95,13 @@ namespace BlogApp.ViewModels
                 Users.LoadFromQueryable(query);
             }
         }
+        public static string GetUsername()
+        {
+            using (var db = new DatabaseBlog())
+            {
+                var user = db.Users.Find(GetCurrentUserId());
+                return user.Username.ToString();
+            }
+        }
     }
 }
