@@ -54,11 +54,22 @@
             </tr>
             <tr>
                 <td colspan="2">
-                    <bs:RouteLink class="logincell" RouteName="CreatePost" style="font-size:20px; margin:10px; border-radius:10px; border:solid;width:200px" Type="Default">
-                        <bs:GlyphIcon Icon="Book" />
-                        <br />
-                        Create Post
-                    </bs:RouteLink>
+                    <dot:AuthenticatedView>
+                        <AuthenticatedTemplate>
+                            <bs:RouteLink class="logincell" RouteName="CreatePost" style="font-size:20px; margin:10px; border-radius:10px; border:solid;width:200px" Type="Default">
+                                <bs:GlyphIcon Icon="Book" />
+                                <br />
+                                Create Post
+                            </bs:RouteLink>
+                        </AuthenticatedTemplate>
+                        <NotAuthenticatedTemplate>
+                            <bs:LinkButton class="logincell" Click="{command: Show()}" style="font-size:20px; margin:10px; border-radius:10px; border:solid;width:200px" Type="Default">
+                                <bs:GlyphIcon Icon="Book" />
+                                <br />
+                                Create Post
+                            </bs:LinkButton>
+                        </NotAuthenticatedTemplate>
+                    </dot:AuthenticatedView>
                 </td>
             </tr>
         </table>
@@ -212,6 +223,9 @@
                     </div>
                     {{value: CommentError}}
                 </AuthenticatedTemplate>
+                <NotAuthenticatedTemplate>
+                    <h2>To Comment you need to Sign in.</h2>
+                </NotAuthenticatedTemplate>
             </dot:AuthenticatedView>
         </ContentTemplate>
     </bs:ModalDialog>
