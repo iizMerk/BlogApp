@@ -17,30 +17,13 @@
         </a>
         <div style="width:100%;height:30px"></div>
     </h1>
-    <h1 style="margin-left:-100px"><span style="text-decoration-color:red"> {{value: CreatorName}}</span>'s profile</h1>
-    <div class="row">
-        <div class="col-md-4" style="font-weight:600">Date</div>
-        <div class="col-md-4" style="font-weight:600">Title</div>
-        <div class="col-md-4" style="font-weight:600">Comments</div>
-
-        <div class="col-md-12" style="width: 100%; height:1px; background-color:black"></div>
-        <dot:Repeater DataSource="{value: profilePosts}">
-            <div style="height:1cm">
-                <div class="col-md-4" style="height:1cm"> {{value: Date}}</div>
-                <div class="col-md-4"> {{value: Title}}</div>
-                <div class="col-md-4"> {{value: CommentCount}} </div>
-                <div class="col-md-12" style="width: 100%; height:1px; background-color:black">
-                    <span class="input-group-btn">
-                        <bs:button Click="{command: _root.ShowComment(PostID)}" ButtonTagName="button">Comments</bs:button>
-                    </span>
-                </div>
-            </div>
-        </dot:Repeater>
-    </div>
-    <bs:GridView DataSource="{value: Posts}" ShowHeaderWhenNoData="true">
+    <h3 style="margin-left:-100px"><span style="text-decoration-color:red"> {{value: CreatorName}}</span>'s profile</h3>
+    
+    <bs:GridView DataSource="{value: profilePosts}" ShowHeaderWhenNoData="true">
         <Columns>
             <dot:GridViewTextColumn ValueBinding="{value: Title}" HeaderText="Title" />
             <dot:GridViewTextColumn ValueBinding="{value: Date}" HeaderText="Date" />
+            <dot:GridViewTextColumn ValueBinding="{value: CommentCount}" HeaderText="Comment Count"></dot:GridViewTextColumn>
             <dot:GridViewTemplateColumn>
                 <ContentTemplate>
                     <dot:LinkButton Click="{command: _root.Show(PostID)}">
@@ -51,13 +34,9 @@
             </dot:GridViewTemplateColumn>
             <dot:GridViewTemplateColumn>
                 <ContentTemplate>
-                    <bs:Button Type="Danger" Click="{command:_root.Delete(PostID)}" ButtonTagName="button">
-                        <PostBack.Handlers>
-                            <bs:ModalConfirmPostBackHandler Message="You want to delete this post?" />
-                        </PostBack.Handlers>
-                        Delete
-                        <bs:GlyphIcon Icon="Remove" />
-                    </bs:Button>
+                    <bs:button Click="{command: _root.ShowComment(PostID)}" ButtonTagName="button">
+                        Comments
+                    </bs:button>
                 </ContentTemplate>
             </dot:GridViewTemplateColumn>
         </Columns>
