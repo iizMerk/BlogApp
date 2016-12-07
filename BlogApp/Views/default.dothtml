@@ -21,6 +21,9 @@
     <div ID="sidebar" class="wow slideInLeft">
         <table style="margin-left:0px; width:250px; text-align:center">
             <tr>
+                <td ><h4 style="font-weight:300">Welcome, {{value: DisplayName}}</h4></td>
+            </tr>
+            <tr>
                 <dot:AuthenticatedView>
                     <AuthenticatedTemplate>
                         <td>
