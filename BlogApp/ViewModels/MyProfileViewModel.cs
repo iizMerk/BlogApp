@@ -27,7 +27,6 @@ namespace BlogApp.ViewModels
                 var post = db.Posts.Find(postid);
                 TitlePost = post.Title;
                 TextPost = post.Text;
-
             }
             IsDisplayed = true;
         }

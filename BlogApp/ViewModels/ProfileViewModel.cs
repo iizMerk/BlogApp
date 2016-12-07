@@ -16,7 +16,8 @@ namespace BlogApp.ViewModels
         public GridViewDataSet<Post> profilePosts { get; set; } = new GridViewDataSet<Post>()
         {
             SortExpression = nameof(Post.Date),
-            SortDescending = true
+            SortDescending = true,
+            
         };
 
         public string GetCreatorName()

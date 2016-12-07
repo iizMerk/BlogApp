@@ -22,25 +22,21 @@
     <bs:GridView DataSource="{value: profilePosts}" ShowHeaderWhenNoData="true">
         <Columns>
             <dot:GridViewTextColumn ValueBinding="{value: Title}" HeaderText="Title" />
-            <dot:GridViewTextColumn ValueBinding="{value: Date}" HeaderText="Date" />
-            <dot:GridViewTextColumn ValueBinding="{value: CommentCount}" HeaderText="Comment Count"></dot:GridViewTextColumn>
+            <dot:GridViewTextColumn  FormatString="g" ValueBinding="{value: Date}" HeaderText="Date" />
             <dot:GridViewTemplateColumn>
                 <ContentTemplate>
-                    <div style="text-align:center; margin-top:10px">
-                        <dot:LinkButton Click="{command: _root.Show(PostID)}">
-                            Read
-                            <bs:GlyphIcon Icon="Book" />
-                        </dot:LinkButton>
-                    </div>
-</ContentTemplate>
+                    <dot:LinkButton Click="{command: _root.Show(PostID)}">
+                        Read
+                        <bs:GlyphIcon Icon="Book" />
+                    </dot:LinkButton>
+                </ContentTemplate>
             </dot:GridViewTemplateColumn>
             <dot:GridViewTemplateColumn>
                 <ContentTemplate>
-                    <div style="text-align:center">
-                        <bs:button Click="{command: _root.ShowComment(PostID)}" ButtonTagName="button">
-                            Comments
-                        </bs:button>
-                    </div>
+                    <bs:button Click="{command: _root.ShowComment(PostID)}" ButtonTagName="button">
+                        Comments {{value: CommentCount}}
+                        <bs:GlyphIcon Icon="Comment" />
+                    </bs:button>
                 </ContentTemplate>
             </dot:GridViewTemplateColumn>
         </Columns>
