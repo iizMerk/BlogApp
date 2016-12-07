@@ -27,7 +27,7 @@ namespace BlogApp.ViewModels
                     claim.Add(new Claim(ClaimTypes.Name, user.Username));
                     claim.Add(new Claim(ClaimTypes.Role, Convert.ToString(user.Userrole)));
 
-                    var identity = new ClaimsIdentity(claim ,DefaultAuthenticationTypes.ApplicationCookie);
+                    var identity = new ClaimsIdentity(claim, DefaultAuthenticationTypes.ApplicationCookie);
                     return identity;
                 }
             }
@@ -100,7 +100,15 @@ namespace BlogApp.ViewModels
             using (var db = new DatabaseBlog())
             {
                 var user = db.Users.Find(GetCurrentUserId());
-                return user.Username.ToString();
+                if (user == null)
+                {
+                    return null;
+                }
+                else
+                {
+                    return user.Username.ToString();
+                }
+
             }
         }
     }
