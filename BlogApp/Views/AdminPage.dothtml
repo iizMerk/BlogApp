@@ -71,7 +71,7 @@
             <dot:GridViewTextColumn HeaderText="UserID" ValueBinding="{value: UserID}" />
             <dot:GridViewTextColumn HeaderText="Title" ValueBinding="{value: Title}" />
             <dot:GridViewTextColumn HeaderText="Category" ValueBinding="{value: Category}"/>
-            <dot:GridViewTextColumn HeaderText="Date" ValueBinding="{value: Date}" />
+            <dot:GridViewTextColumn HeaderText="Date" ValueBinding="{value: Date}" FormatString="g" />
             <dot:GridViewTemplateColumn>
                 <HeaderTemplate>
                     Read Post

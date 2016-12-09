@@ -75,8 +75,8 @@ namespace BlogApp.ViewModels
 
         public new GridViewDataSet<Post> Posts { get; set; } = new GridViewDataSet<Post>
         {
-            SortDescending = false,
             SortExpression = nameof(Post.Date),
+            SortDescending = true,
             PageSize = 5
         };
 
